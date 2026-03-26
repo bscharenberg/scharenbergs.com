@@ -493,7 +493,8 @@ footer a { color: var(--brown-light); text-decoration: none; }
   .do-grid { grid-template-columns: 1fr; }
   .tl-item { grid-template-columns: 100px 1fr; }
   .tools-intro-grid { grid-template-columns: 1fr; }
-  .thinking-grid { grid-template-columns: 1fr; }
+  #smartcookies [style*="grid-template-columns: repeat(3"] { grid-template-columns: 1fr !important; }
+  .client-row { margin-top: 1rem; }
   footer { flex-direction: column; gap: 0.5rem; text-align: center; }
 }
 </style>
@@ -507,6 +508,7 @@ footer a { color: var(--brown-light); text-decoration: none; }
     <li><a href="#story">About</a></li>
     <li><a href="#expertise">What I Do</a></li>
     <li><a href="#experience">Experience</a></li>
+    <li><a href="#smartcookies">Smart Cookies</a></li>
     <li><a href="#tools">AI Tools</a></li>
     <li><a href="#thinking">Thinking</a></li>
     <li><a href="#life">Life</a></li>
@@ -529,7 +531,7 @@ footer a { color: var(--brown-light); text-decoration: none; }
       Most problems get clearer when you talk them through with the right person, and I'll be honest about what I don't know.
     </p>
     <p class="hero-sub">
-      I'm Bryon. Eight years inside security and AI consulting, building GTM engines, leading client partnerships, and helping leaders navigate decisions where the path isn't obvious. I've worked across banks, fintechs, Fortune 50 tech companies, and growth-stage startups. When I'm not doing that, I'm watching UCI World Cup downhill with my kids, finding excuses to be on a mountain, and still working my way back after a hip resurfacing 16 months ago.
+      I'm Bryon. Eight years inside security and AI consulting, building GTM engines, leading client partnerships, and helping leaders navigate decisions where the path isn't obvious. I've worked across banks, fintechs, Fortune 50 tech companies, and growth-stage startups.
     </p>
     <div class="hero-ctas">
       <a href="#tools" class="btn-primary">Try the AI tools</a>
@@ -594,7 +596,7 @@ footer a { color: var(--brown-light); text-decoration: none; }
           <div class="ch-num">04</div>
           <div>
             <div class="ch-title">The ethical layer</div>
-            <div class="ch-text">I'm a lay pastor and a dad who takes that second one seriously. My kids are getting older. We've traded garage bike builds for snowboarding and skiing together, and I'm hoping for a lot more of that. Sixteen months ago I had a hip resurfacing and I'm still working my way back to the mountain. I mention it because it's the same thing I'd tell anyone navigating a hard season: you figure out what you're actually made of when the path is slower than you'd like. That shapes how I give advice and why I'll tell you what I actually think rather than what you want to hear. Doing things right and doing things that work aren't in conflict.</div>
+            <div class="ch-text">I'm a lay pastor and a dad, and both matter a lot to me. My kids are getting older. We've traded garage bike builds for snowboarding and skiing together, and I'm hoping for a lot more of that. Sixteen months ago I had a hip resurfacing and I'm still working my way back to the mountain. I mention it because it's the same thing I'd tell anyone navigating a hard season: you figure out what you're actually made of when the path is slower than you'd like. That shapes how I give advice and why I'll tell you what I actually think rather than what you want to hear. Doing things right and doing things that work aren't in conflict.</div>
           </div>
         </div>
       </div>
@@ -639,7 +641,7 @@ footer a { color: var(--brown-light); text-decoration: none; }
 <!-- EXPERIENCE -->
 <section id="experience">
   <div class="section-label fade-up">Experience</div>
-  <h2 class="section-title fade-up">The receipts</h2>
+  <h2 class="section-title fade-up">The work</h2>
   <div class="timeline">
     <div class="tl-item fade-up">
       <div class="tl-dot"></div>
@@ -677,6 +679,39 @@ footer a { color: var(--brown-light); text-decoration: none; }
         <div class="tl-desc">Led a multinational, bilingual team of 15. Built a local volunteer base of 25+ citizens who are still leading the engagement today. Directed marketing for a national conference that led to invitations to speak on Venezuelan national radio, in Spanish.</div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- SMART COOKIES -->
+<section id="smartcookies" style="background: var(--warm-white);">
+  <div class="section-label fade-up">Smart Cookies</div>
+  <h2 class="section-title fade-up">Conversations worth having in public</h2>
+  <p class="section-sub fade-up">Smart Cookies is an executive event series and podcast I help lead and host at Kalles Group, covering AI, security, risk, and leadership. We bring in sharp practitioners: CISOs, founders, product leaders at Microsoft and beyond. The conversations are about what's actually happening, not what sounds good on a slide deck.</p>
+
+  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; background: var(--tan); border: 1px solid var(--tan); border-radius: 4px; overflow: hidden; max-width: 1100px; margin: 0 auto 2.5rem;" class="fade-up">
+    <a href="https://kallesgroup.com/from-tool-to-teammate-smart-cookies-recap-on-leading-with-ai/" target="_blank" style="background: var(--warm-white); padding: 1.75rem; text-decoration: none; display: block; transition: background 0.2s;" onmouseover="this.style.background='var(--parchment)'" onmouseout="this.style.background='var(--warm-white)'">
+      <div style="font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); font-weight: 500; margin-bottom: 0.6rem;">AI Leadership</div>
+      <div style="font-family: var(--serif); font-size: 1rem; font-weight: 500; color: var(--ink); margin-bottom: 0.5rem; line-height: 1.35;">From Tool to Teammate: Leading with AI</div>
+      <div style="font-size: 0.82rem; color: var(--brown); line-height: 1.6;">With Eli Coon (Microsoft Copilot Studio), Zach Koch (Ultravox), Mike Anderson (AILayer). What it takes to move AI from curiosity to operational reality.</div>
+      <div style="font-size: 0.75rem; color: var(--accent); margin-top: 0.75rem; font-weight: 500;">Read recap ↗</div>
+    </a>
+    <a href="https://kallesgroup.com/smart-cookies-leadership-through-change-recap/" target="_blank" style="background: var(--warm-white); padding: 1.75rem; text-decoration: none; display: block; transition: background 0.2s;" onmouseover="this.style.background='var(--parchment)'" onmouseout="this.style.background='var(--warm-white)'">
+      <div style="font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); font-weight: 500; margin-bottom: 0.6rem;">Leadership</div>
+      <div style="font-family: var(--serif); font-size: 1rem; font-weight: 500; color: var(--ink); margin-bottom: 0.5rem; line-height: 1.35;">Leading Through Change</div>
+      <div style="font-size: 0.82rem; color: var(--brown); line-height: 1.6;">A panel of leaders from healthcare, tech, and legal on what it actually looks like to lead when things are uncertain, complex, or just plain messy.</div>
+      <div style="font-size: 0.75rem; color: var(--accent); margin-top: 0.75rem; font-weight: 500;">Read recap ↗</div>
+    </a>
+    <a href="https://kallesgroup.com/podcast/smart-cookies-a-smart-conversation-with-niamh-vianney-muldoon-ciso/" target="_blank" style="background: var(--warm-white); padding: 1.75rem; text-decoration: none; display: block; transition: background 0.2s;" onmouseover="this.style.background='var(--parchment)'" onmouseout="this.style.background='var(--warm-white)'">
+      <div style="font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); font-weight: 500; margin-bottom: 0.6rem;">Podcast</div>
+      <div style="font-family: var(--serif); font-size: 1rem; font-weight: 500; color: var(--ink); margin-bottom: 0.5rem; line-height: 1.35;">Niamh Muldoon on Trust and Cybersecurity</div>
+      <div style="font-size: 0.82rem; color: var(--brown); line-height: 1.6;">A conversation with a CISO who has spent two decades building trust as a business asset, not just a security function.</div>
+      <div style="font-size: 0.75rem; color: var(--accent); margin-top: 0.75rem; font-weight: 500;">Listen ↗</div>
+    </a>
+  </div>
+
+  <div style="max-width: 1100px; margin: 0 auto; display: flex; gap: 1rem; flex-wrap: wrap;" class="fade-up">
+    <a href="https://open.spotify.com/episode/0qwG07WuSbc32TNPBdHgsI" target="_blank" class="btn-ghost">Listen on Spotify ↗</a>
+    <a href="https://www.youtube.com/watch?v=No6evlL78LI" target="_blank" class="btn-ghost">Watch on YouTube ↗</a>
   </div>
 </section>
 
@@ -833,7 +868,7 @@ footer a { color: var(--brown-light); text-decoration: none; }
 <!-- FOOTER -->
 <footer>
   <span>© 2026 Bryon Scharenberg · Seattle, WA</span>
-  <span>Built with intention.</span>
+  <span>Built with Claude, GitHub Pages, and VS Code.</span>
 </footer>
 
 <script>
