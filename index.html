@@ -267,24 +267,24 @@ section { padding: 6rem 4rem; }
 #experience { background: var(--parchment); }
 .timeline { max-width: 800px; margin: 0 auto; }
 .tl-item {
-  display: grid; grid-template-columns: 160px 1fr;
+  display: grid; grid-template-columns: 180px 1fr;
   gap: 2rem; padding-bottom: 2.8rem; position: relative;
 }
 .tl-item::before {
   content: ''; position: absolute;
-  left: 156px; top: 8px; bottom: 0;
+  left: 176px; top: 8px; bottom: 0;
   width: 1px; background: var(--tan);
 }
 .tl-item:last-child::before { display: none; }
 .tl-dot {
-  position: absolute; left: 151px; top: 6px;
+  position: absolute; left: 171px; top: 6px;
   width: 11px; height: 11px; border-radius: 50%;
   background: var(--accent); border: 2.5px solid var(--parchment);
 }
 .tl-date {
   font-size: 0.78rem; color: var(--brown-light);
   letter-spacing: 0.03em; text-align: right; padding-top: 0.15rem;
-  line-height: 1.5;
+  padding-right: 1rem; line-height: 1.5; white-space: nowrap;
 }
 .tl-body { padding-left: 2rem; }
 .tl-role {
@@ -504,7 +504,7 @@ footer a { color: var(--brown-light); text-decoration: none; }
   .story-grid { grid-template-columns: 1fr; gap: 3rem; }
   .story-aside { position: static; }
   .do-grid { grid-template-columns: 1fr; }
-  .tl-item { grid-template-columns: 100px 1fr; }
+  .tl-item { grid-template-columns: 120px 1fr; }
   .tools-intro-grid { grid-template-columns: 1fr; }
   .sc-media-grid { grid-template-columns: 1fr !important; }
   #smartcookies [style*="grid-template-columns: repeat(3"] { grid-template-columns: 1fr !important; }
@@ -521,8 +521,8 @@ footer a { color: var(--brown-light); text-decoration: none; }
   <ul class="nav-links">
     <li><a href="#story">About</a></li>
     <li><a href="#expertise">What I Do</a></li>
-    <li><a href="#experience">Experience</a></li>
     <li><a href="#smartcookies">Smart Cookies</a></li>
+    <li><a href="#experience">Experience</a></li>
     <li><a href="#tools">AI Tools</a></li>
     <li><a href="#thinking">Thinking</a></li>
     <li><a href="#life">Life</a></li>
@@ -672,50 +672,6 @@ footer a { color: var(--brown-light); text-decoration: none; }
   </div>
 </section>
 
-<!-- EXPERIENCE -->
-<section id="experience">
-  <div class="section-label fade-up">Experience</div>
-  <h2 class="section-title fade-up">The work</h2>
-  <div class="timeline">
-    <div class="tl-item fade-up">
-      <div class="tl-dot"></div>
-      <div class="tl-date">May 2022<br>Present</div>
-      <div class="tl-body">
-        <div class="tl-role">Director of Growth</div>
-        <div class="tl-co">Kalles Group · Seattle, WA</div>
-        <div class="tl-desc">Own internal GTM strategy and execution, aligning sales, marketing, and delivery across a 13-person team. On the client side, serve as a trusted advisor to security, risk, engineering, and technology leaders at Fortune 50 and regulated organizations. Led the conversion of a long-term advisory relationship into a $300K AI automation engagement, validated a human-in-the-loop operating model in 30 days, and built a foundation now scaling across 14+ workflow categories. Grew one net-new account from $0 to $5M across 6+ buying centers with no inherited pipeline.</div>
-      </div>
-    </div>
-    <div class="tl-item fade-up">
-      <div class="tl-dot"></div>
-      <div class="tl-date">Aug 2019<br>May 2022</div>
-      <div class="tl-body">
-        <div class="tl-role">Head of Marketing & Recruiting</div>
-        <div class="tl-co">Kalles Group · Seattle, WA</div>
-        <div class="tl-desc">Doubled revenue-generating hires in the first 60 days. Built the marketing team from scratch and led the full company rebrand, positioning Kalles Group as a top cybersecurity consultancy. Implemented Greenhouse ATS and scaled recruiting for engineering, security, and AI roles at Fortune 500 clients.</div>
-      </div>
-    </div>
-    <div class="tl-item fade-up">
-      <div class="tl-dot"></div>
-      <div class="tl-date">Dec 2013<br>Jun 2017</div>
-      <div class="tl-body">
-        <div class="tl-role">Director, India Partnership</div>
-        <div class="tl-co">CRU & Global Leadership Forum · Karnataka, India</div>
-        <div class="tl-desc">Recruited, trained, and led a 30+ person team across India. Co-founded the Global Leadership Forum with a flagship partnership at Manipal University and a $500K program budget. Closed 26 new investors in a single quarter. Built the operational model from scratch across a cross-cultural, multilingual environment.</div>
-      </div>
-    </div>
-    <div class="tl-item fade-up">
-      <div class="tl-dot"></div>
-      <div class="tl-date">2005<br>2007</div>
-      <div class="tl-body">
-        <div class="tl-role">Team Leader / Outreach Coordinator</div>
-        <div class="tl-co">Vida Estudiantil · Mérida, Venezuela</div>
-        <div class="tl-desc">Led a multinational, bilingual team of 15. Built a local volunteer base of 25+ citizens who are still leading the engagement today. Directed marketing for a national conference that led to invitations to speak on Venezuelan national radio, in Spanish.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- SMART COOKIES -->
 <section id="smartcookies" style="background: var(--warm-white);">
   <div class="section-label fade-up">Smart Cookies</div>
@@ -757,6 +713,59 @@ footer a { color: var(--brown-light); text-decoration: none; }
     <a href="https://www.youtube.com/watch?v=No6evlL78LI" target="_blank" class="btn-ghost">Watch on YouTube ↗</a>
   </div>
 </section>
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label fade-up">Experience</div>
+  <h2 class="section-title fade-up">The work</h2>
+  <div class="timeline">
+    <div class="tl-item fade-up">
+      <div class="tl-dot"></div>
+      <div class="tl-date">May 2022<br>Present</div>
+      <div class="tl-body">
+        <div class="tl-role">Director of Growth</div>
+        <div class="tl-co">Kalles Group · Seattle, WA</div>
+        <div class="tl-desc">Grew one account from zero to $5M across six buying centers over three years. What I learned: enterprise buyers don't want a vendor, they want someone they can trust, who they like, and who will be honest with them when it matters.</div>
+      </div>
+    </div>
+    <div class="tl-item fade-up">
+      <div class="tl-dot"></div>
+      <div class="tl-date">Aug 2019<br>May 2022</div>
+      <div class="tl-body">
+        <div class="tl-role">Head of Marketing & Recruiting</div>
+        <div class="tl-co">Kalles Group · Seattle, WA</div>
+        <div class="tl-desc">Hired Principal Engineers for AI-powered security products before AI was the thing everyone was hiring for. Spent a lot of time in rooms with technical leaders, helping them craft a narrative that would actually resonate with the people they wanted to hire.</div>
+      </div>
+    </div>
+    <div class="tl-item fade-up">
+      <div class="tl-dot"></div>
+      <div class="tl-date">Dec 2013<br>Jun 2017</div>
+      <div class="tl-body">
+        <div class="tl-role">Director, India Partnership</div>
+        <div class="tl-co">CRU & Global Leadership Forum · Karnataka, India</div>
+        <div class="tl-desc">Partnered with Manipal University on a flagship leadership program, with a $500K program budget. Three and a half years of learning how to build trust across language, religion, class, and generation. The skill I still use the most.</div>
+      </div>
+    </div>
+    <div class="tl-item fade-up">
+      <div class="tl-dot"></div>
+      <div class="tl-date">Dec 2007<br>Dec 2013</div>
+      <div class="tl-body">
+        <div class="tl-role">Senior Staff</div>
+        <div class="tl-co">CRU · Seattle, WA</div>
+        <div class="tl-desc">Mastered fund development as a missionary. Spent years initiating conversations about faith and meaning with strangers, which taught me how to talk to people about things that matter without making it weird. By the end I could tell within the first five minutes whether a conversation was going somewhere real. Most of my instincts about enterprise relationship-building were shaped here, long before I ever sat in a B2B sales meeting.</div>
+      </div>
+    </div>
+    <div class="tl-item fade-up">
+      <div class="tl-dot"></div>
+      <div class="tl-date">2005<br>2007</div>
+      <div class="tl-body">
+        <div class="tl-role">Team Leader / Outreach Coordinator</div>
+        <div class="tl-co">Vida Estudiantil · Mérida, Venezuela</div>
+        <div class="tl-desc">First leadership role, first real job, done in a second language in a country I'd never been to. Led a multinational, bilingual team of 15. Built a local volunteer base of 25+ Venezuelans, many of whom are still leading the engagement today.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 <!-- CLIENTS -->
 <section id="clients">
