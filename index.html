@@ -1342,8 +1342,8 @@ document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
   }
   
   function showOpeningMessage() {
-    // Send an empty-ish first message to get the tool's opener
-    sendMessage('Start', true);
+    const welcome = "Hi. I'm a diagnostic tool built on Bryon's POV.\n\nTell me about the AI project you're considering. What are you trying to build, and what problem is it supposed to solve?";
+    appendMessage('assistant', welcome);
   }
   
   function appendMessage(role, text) {
