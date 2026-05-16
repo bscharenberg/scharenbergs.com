@@ -505,6 +505,7 @@ footer a { color: var(--brown-light); text-decoration: none; }
   .story-aside { position: static; }
   .do-grid { grid-template-columns: 1fr; }
   .tl-item { grid-template-columns: 120px 1fr; }
+  .helltrack-card { grid-template-columns: 1fr !important; }
   .tools-intro-grid { grid-template-columns: 1fr; }
   .sc-media-grid { grid-template-columns: 1fr !important; }
   #smartcookies [style*="grid-template-columns: repeat(3"] { grid-template-columns: 1fr !important; }
@@ -1205,7 +1206,36 @@ footer a { color: var(--brown-light); text-decoration: none; }
       </div>
     </div>
  
-    <p class="tools-footnote">Two tools live. More in the works, shaped by what people keep asking me. If you're working through something specific and want to talk, <a href="#contact">reach out</a>.</p>
+    <div style="max-width: 1100px; margin: 3rem auto 0; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 2.5rem;" class="fade-up">
+      <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.75rem;">
+        <div style="font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(200,185,154,0.35); font-weight: 500; white-space: nowrap;">Built for fun</div>
+        <div style="flex: 1; height: 1px; background: rgba(255,255,255,0.06);"></div>
+      </div>
+
+      <div style="background: #0d0d0d; border-radius: 6px; padding: 1.75rem 2rem; display: grid; grid-template-columns: auto 1fr; gap: 1.5rem; align-items: start;" class="helltrack-card">
+        <div style="background: #c8f000; border-radius: 3px; padding: 0.35rem 0.7rem; font-size: 12px; font-weight: 700; color: #0d0d0d; letter-spacing: 0.06em; font-family: var(--sans); flex-shrink: 0; margin-top: 2px;">HT</div>
+        <div>
+          <div style="font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(200,200,200,0.3); margin-bottom: 0.3rem; font-weight: 500;">Personal project · Live</div>
+          <div style="font-size: 1.25rem; font-weight: 700; color: #c8f000; letter-spacing: 0.04em; margin-bottom: 0.15rem; font-family: var(--sans);">HELLTRACK</div>
+          <div style="font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(200,200,200,0.35); margin-bottom: 0.9rem;">UCI Downhill &amp; Enduro</div>
+          <p style="font-size: 0.875rem; color: rgba(255,255,255,0.55); line-height: 1.75; margin-bottom: 1rem;">I follow UCI downhill racing but the content is everywhere: YouTube channels, Pinkbike, athlete feeds, race recaps. Built this to fix it for myself. Idea to live in 5 hours.</p>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.1rem;">
+            <span style="font-size: 0.7rem; color: rgba(200,200,200,0.45); border: 1px solid rgba(255,255,255,0.1); padding: 0.2rem 0.6rem; border-radius: 2px; letter-spacing: 0.04em;">GitHub Actions</span>
+            <span style="font-size: 0.7rem; color: rgba(200,200,200,0.45); border: 1px solid rgba(255,255,255,0.1); padding: 0.2rem 0.6rem; border-radius: 2px; letter-spacing: 0.04em;">Cloudflare Worker</span>
+            <span style="font-size: 0.7rem; color: rgba(200,200,200,0.45); border: 1px solid rgba(255,255,255,0.1); padding: 0.2rem 0.6rem; border-radius: 2px; letter-spacing: 0.04em;">PWA</span>
+            <span style="font-size: 0.7rem; color: rgba(200,200,200,0.45); border: 1px solid rgba(255,255,255,0.1); padding: 0.2rem 0.6rem; border-radius: 2px; letter-spacing: 0.04em;">11 sources</span>
+            <span style="font-size: 0.7rem; color: rgba(200,200,200,0.45); border: 1px solid rgba(255,255,255,0.1); padding: 0.2rem 0.6rem; border-radius: 2px; letter-spacing: 0.04em;">Content scoring engine</span>
+            <span style="font-size: 0.7rem; color: rgba(200,200,200,0.45); border: 1px solid rgba(255,255,255,0.1); padding: 0.2rem 0.6rem; border-radius: 2px; letter-spacing: 0.04em;">Open source</span>
+          </div>
+          <div style="display: flex; gap: 0.65rem; flex-wrap: wrap;">
+            <a href="https://helltrack.app" target="_blank" style="background: #c8f000; color: #0d0d0d; font-size: 0.75rem; font-weight: 700; padding: 0.45rem 1rem; border-radius: 3px; text-decoration: none; letter-spacing: 0.04em; transition: opacity 0.15s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Visit helltrack.app ↗</a>
+            <a href="https://github.com/bscharenberg/helltrack" target="_blank" style="background: transparent; color: rgba(255,255,255,0.4); font-size: 0.75rem; font-weight: 500; padding: 0.45rem 1rem; border-radius: 3px; text-decoration: none; border: 1px solid rgba(255,255,255,0.1); transition: border-color 0.15s;" onmouseover="this.style.borderColor='rgba(255,255,255,0.28)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.1)'">GitHub ↗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="tools-footnote" style="margin-top: 2rem;">More in the works, shaped by what people keep asking me. If you're working through something specific and want to talk, <a href="#contact">reach out</a>.</p>
   </div>
 </section>
 
