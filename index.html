@@ -1169,17 +1169,6 @@ footer a { color: var(--brown-light); text-decoration: none; }
  
     <div class="reality-check-card">
       <div class="reality-check-card-body">
-        <div class="reality-check-label">LIVE</div>
-        <h3 class="reality-check-title">Reality Check: Is It Worth Building?</h3>
-        <p class="reality-check-desc">Most AI projects stall before they start because the right questions never get asked. Who has the pain? Is a human in the loop where the risk lives? What would tell you in 30 days that you're wrong? This won't tell you whether to build it. It'll tell you whether you've thought about it clearly.</p>
-        <button class="reality-check-launch" id="realityCheckLaunch" type="button">
-          Try it
-          <span class="reality-check-arrow">→</span>
-        </button>
-      </div>
-    </div>
-    <div class="reality-check-card" style="margin-top: 32px;">
-      <div class="reality-check-card-body">
         <div class="reality-check-label">LIVE · PORTFOLIO PROJECT</div>
         <h3 class="reality-check-title">Scout: AI Sales Assistant for B2B Services</h3>
         <p class="reality-check-desc">Scout helps sellers at relationship-led firms prep for calls, handle objections, coach stalled deals, and shape proposals, all in the voice of the firm. Built on Claude. This uses a fictional consultancy called BTO Group, so you can try the full experience without any confidentiality concerns.</p>
@@ -1359,31 +1348,6 @@ const observer = new IntersectionObserver(
 );
 document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 </script>
-<div class="rc-modal" id="rcModal" role="dialog" aria-modal="true" aria-labelledby="rcTitle">
-  <div class="rc-modal-box">
-    <div class="rc-header">
-      <div>
-        <div class="rc-header-title" id="rcTitle">Reality Check: Is It Worth Building?</div>
-        <div class="rc-header-sub">Built on Bryon Scharenberg's POV</div>
-      </div>
-      <button class="rc-close" id="rcClose" type="button" aria-label="Close">×</button>
-    </div>
-    <div class="rc-messages" id="rcMessages"></div>
-    <div class="rc-input-bar">
-      <textarea
-        class="rc-textarea"
-        id="rcInput"
-        placeholder="Walk me through the idea. Doesn't have to be polished."
-        rows="1"
-        aria-label="Your message"
-      ></textarea>
-      <button class="rc-send" id="rcSend" type="button">Send</button>
-    </div>
-    <div class="rc-footer-note">
-      Responses are AI-generated. For complex situations, a real conversation usually works better.
-    </div>
-  </div>
-</div>
 <div class="rc-modal" id="scoutModal" role="dialog" aria-modal="true" aria-labelledby="scoutTitle">
   <div class="rc-modal-box">
     <div class="rc-header">
@@ -1410,137 +1374,6 @@ document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
   </div>
 </div>
 
-<script>
-(function() {
-  const WORKER_URL = 'https://reality-check.scharenbergs.workers.dev';
-  
-  const modal = document.getElementById('rcModal');
-  const launchBtn = document.getElementById('realityCheckLaunch');
-  const closeBtn = document.getElementById('rcClose');
-  const messagesEl = document.getElementById('rcMessages');
-  const inputEl = document.getElementById('rcInput');
-  const sendBtn = document.getElementById('rcSend');
-  
-  // Conversation state
-  const conversation = [];
-  let isWaiting = false;
-  
-  function openModal() {
-    modal.classList.add('is-open');
-    document.body.style.overflow = 'hidden';
-    // Seed the opening message if first time
-    if (conversation.length === 0) {
-      showOpeningMessage();
-    }
-    setTimeout(() => inputEl.focus(), 300);
-  }
-  
-  function closeModal() {
-    modal.classList.remove('is-open');
-    document.body.style.overflow = '';
-  }
-  
-  function showOpeningMessage() {
-    const welcome = "Hi. I'm a diagnostic tool built on Bryon's POV.\n\nTell me about the AI project you're considering. What are you trying to build, and what problem is it supposed to solve?";
-    appendMessage('assistant', welcome);
-  }
-  
-  function appendMessage(role, text) {
-    const div = document.createElement('div');
-    div.className = role === 'user' ? 'rc-msg rc-msg-user' : 'rc-msg rc-msg-assistant';
-    div.textContent = text;
-    messagesEl.appendChild(div);
-    messagesEl.scrollTop = messagesEl.scrollHeight;
-  }
-  
-  function showTyping() {
-    const div = document.createElement('div');
-    div.className = 'rc-typing';
-    div.id = 'rcTyping';
-    div.innerHTML = '<span></span><span></span><span></span>';
-    messagesEl.appendChild(div);
-    messagesEl.scrollTop = messagesEl.scrollHeight;
-  }
-  
-  function hideTyping() {
-    const el = document.getElementById('rcTyping');
-    if (el) el.remove();
-  }
-  
-  async function sendMessage(text, isHidden) {
-    if (!text.trim() || isWaiting) return;
-    isWaiting = true;
-    sendBtn.disabled = true;
-    
-    // Add user message to conversation, but don't display the hidden seed
-    conversation.push({ role: 'user', content: text });
-    if (!isHidden) {
-      appendMessage('user', text);
-    }
-    
-    inputEl.value = '';
-    autoResize();
-    showTyping();
-    
-    try {
-      const response = await fetch(WORKER_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: conversation })
-      });
-      
-      const data = await response.json();
-      hideTyping();
-      
-      if (!response.ok) {
-        appendMessage('assistant', "Something went wrong on my end. Give it another try in a moment.");
-        // Remove the failed user message so conversation stays valid
-        conversation.pop();
-      } else {
-        const reply = data.reply || "I didn't catch that. Could you rephrase?";
-        conversation.push({ role: 'assistant', content: reply });
-        appendMessage('assistant', reply);
-      }
-    } catch (err) {
-      hideTyping();
-      appendMessage('assistant', "I couldn't reach the server. Check your connection and try again.");
-      conversation.pop();
-    } finally {
-      isWaiting = false;
-      sendBtn.disabled = false;
-      inputEl.focus();
-    }
-  }
-  
-  function autoResize() {
-    inputEl.style.height = 'auto';
-    inputEl.style.height = Math.min(inputEl.scrollHeight, 140) + 'px';
-  }
-  
-  // Event listeners
-  launchBtn.addEventListener('click', openModal);
-  closeBtn.addEventListener('click', closeModal);
-  
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) closeModal();
-  });
-  
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
-  });
-  
-  sendBtn.addEventListener('click', () => sendMessage(inputEl.value, false));
-  
-  inputEl.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
-      sendMessage(inputEl.value, false);
-    }
-  });
-  
-  inputEl.addEventListener('input', autoResize);
-})();
-</script>
 
 <script>
 (function() {
