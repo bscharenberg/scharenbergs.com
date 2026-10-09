@@ -1,0 +1,35 @@
+# scharenbergs.com
+#
+# Policy: do not train on this site; do cite and list it.
+# Training crawlers are blocked by name. Search and citation crawlers are welcome.
+# This file is a request, not enforcement. Well-behaved crawlers honor it.
+
+# Search and citation crawlers: allowed
+User-agent: Googlebot
+User-agent: Bingbot
+User-agent: DuckDuckBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: Claude-User
+User-agent: Claude-SearchBot
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+Allow: /
+
+# Model-training crawlers: blocked
+User-agent: GPTBot
+User-agent: ClaudeBot
+User-agent: anthropic-ai
+User-agent: Google-Extended
+User-agent: CCBot
+User-agent: Applebot-Extended
+User-agent: meta-externalagent
+User-agent: Bytespider
+User-agent: cohere-ai
+User-agent: Diffbot
+User-agent: Omgilibot
+Disallow: /
+
+# Everything else
+User-agent: *
+Allow: /
