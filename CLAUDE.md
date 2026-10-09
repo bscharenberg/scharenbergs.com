@@ -5,9 +5,9 @@ Personal site for Bryon Scharenberg. Static single page served by GitHub Pages f
 ## Structure
 
 - Everything lives in `index.html`: styles, markup, and script.
-- Photos are embedded as base64 `data:` URIs, so the file is large (~500KB). Do not read it whole. Use grep to find the section you need, then read only those lines.
-- Sections by id: `story`, `expertise`, `smartcookies`, `experience`, `tools`, `thinking`, `life`, `contact`.
-- Mobile overrides live in the `@media` block near the top of the `<style>` tag.
+- Most photos are embedded as base64 `data:` URIs, so the file is large. Do not read it whole. Use grep to find the section you need, then read only those lines. Images used in more than one place are separate files in the repo root (e.g. `smart-cookies-panel.jpg`).
+- Sections in page order: hero, `expertise`, `smartcookies`, `experience`, `tools`, `story`, `thinking`, `life`, `contact`. Proof comes before personal narrative; keep the nav in the same order.
+- Mobile overrides live in the `@media (max-width: 900px)` block in the `<style>` tag. Inline `grid-template-columns` styles need an `!important` override there or they overflow on phones.
 
 ## Workflow
 
