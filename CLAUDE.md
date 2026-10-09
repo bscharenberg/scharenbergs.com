@@ -29,6 +29,7 @@ Personal site for Bryon Scharenberg. Static single page served by GitHub Pages f
 - Titles and claims must match the CV:
   - Director of Growth & GTM Strategy, Kalles Group (May 2022 to present)
   - Head of Recruiting & Marketing, Kalles Group (Aug 2019 to May 2022)
+  - Recruiting Manager, Kalles Group (Oct 2018 to Aug 2019): 5 direct reports, 400+ interviews, 30+ hires
   - Smart Cookies: helped launch it (2024); designs each program, preps panelists, moderates every panel
   - $0 to $5M is cumulative revenue over three years, with 150% YoY growth in one year
 - If a new claim can't be traced to the CV or a public source, ask before adding it.
