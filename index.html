@@ -847,6 +847,34 @@ footer a { color: var(--brown-light); text-decoration: none; }
   border-radius: 3px 12px 12px 12px;
 }
 
+.rc-msg-formatted {
+  white-space: normal;
+}
+.rc-msg-formatted p,
+.rc-msg-formatted ul,
+.rc-msg-formatted ol,
+.rc-msg-formatted blockquote {
+  margin: 0 0 0.75em;
+}
+.rc-msg-formatted > :last-child {
+  margin-bottom: 0;
+}
+.rc-msg-formatted ul,
+.rc-msg-formatted ol {
+  padding-left: 1.25em;
+}
+.rc-msg-formatted li + li {
+  margin-top: 0.3em;
+}
+.rc-msg-formatted strong {
+  font-weight: 600;
+}
+.rc-msg-formatted blockquote {
+  padding-left: 12px;
+  border-left: 2px solid rgba(138, 184, 133, 0.4);
+  color: #D9E2D6;
+}
+
 .rc-msg-user {
   align-self: flex-end;
   background: #3D5C3A;
@@ -1253,13 +1281,13 @@ footer a { color: var(--brown-light); text-decoration: none; }
       <div style="margin-top: 24px; padding-top: 24px; border-top: 1px solid rgba(246,248,245,0.06);">
         <div style="font-family:'DM Sans',system-ui,sans-serif; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#8AB885; margin-bottom:14px; font-weight:500;">Try asking Scout:</div>
         <div style="display:flex; flex-direction:column; gap:8px;">
-          <div class="scout-prompt" onclick="openScoutWithPrompt(\'I have a first call tomorrow with the new Chief Digital Officer of a regional healthcare system. She\'s 90 days into the role and the last digital initiative stalled under her predecessor.\')">
+          <div class="scout-prompt" role="button" tabindex="0" data-prompt="I have a first call tomorrow with the new Chief Digital Officer of a regional healthcare system. She's 90 days into the role and the last digital initiative stalled under her predecessor.">
             "I have a first call tomorrow with a new CDO, who is 90 days in, and previous initiative stalled..."
           </div>
-          <div class="scout-prompt" onclick="openScoutWithPrompt(\'The VP keeps coming back to price. They said we\'re significantly more expensive than the Big 4 proposal they have on the table.\')">
+          <div class="scout-prompt" role="button" tabindex="0" data-prompt="The VP keeps coming back to price. They said we're significantly more expensive than the Big 4 proposal they have on the table.">
             "The VP keeps coming back to price and they say we're more expensive than the Big 4..."
           </div>
-          <div class="scout-prompt" onclick="openScoutWithPrompt(\'We submitted a proposal 14 days ago. Our champion has gone quiet and we know a Big 4 firm is in the mix.\')">
+          <div class="scout-prompt" role="button" tabindex="0" data-prompt="We submitted a proposal 14 days ago. Our champion has gone quiet and we know a Big 4 firm is in the mix.">
             "We submitted a proposal 14 days ago. Champion has gone quiet..."
           </div>
         </div>
@@ -1474,6 +1502,16 @@ document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
   }
   window.openScoutWithPrompt = openScoutWithPrompt;
 
+  document.querySelectorAll('.scout-prompt[data-prompt]').forEach((el) => {
+    el.addEventListener('click', () => openScoutWithPrompt(el.dataset.prompt));
+    el.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openScoutWithPrompt(el.dataset.prompt);
+      }
+    });
+  });
+
   function closeModal() {
     modal.classList.remove('is-open');
     document.body.style.overflow = '';
@@ -1484,10 +1522,45 @@ document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
     appendMessage('assistant', welcome);
   }
 
+  // Turns Scout's light markdown (bold, italics, lists, quotes, headings) into HTML.
+  // Text is escaped first, so nothing in a reply can inject markup.
+  function formatScoutReply(text) {
+    const escape = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    const inline = (s) => s
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      .replace(/(^|[^*\w])\*(?!\s)(.+?)(?<!\s)\*(?![*\w])/g, '$1<em>$2</em>');
+    const kinds = [
+      { re: /^\s*[-*•]\s+/, open: '<ul>', close: '</ul>', wrap: (s) => '<li>' + s + '</li>' },
+      { re: /^\s*\d+[.)]\s+/, open: '<ol>', close: '</ol>', wrap: (s) => '<li>' + s + '</li>' },
+      { re: /^\s*>\s?/, open: '<blockquote>', close: '</blockquote>', wrap: (s) => s, join: '<br>' },
+    ];
+    return text.trim().split(/\n{2,}/).map((block) => {
+      // Group consecutive lines of the same kind (list, numbered list, quote, plain text).
+      const groups = [];
+      for (const line of block.split('\n')) {
+        const kind = kinds.find((k) => k.re.test(line)) || null;
+        const body = kind ? line.replace(kind.re, '') : line.replace(/^#{1,6}\s+(.*)$/, '**$1**');
+        const last = groups[groups.length - 1];
+        if (last && last.kind === kind) last.lines.push(body);
+        else groups.push({ kind, lines: [body] });
+      }
+      return groups.map(({ kind, lines }) => {
+        const items = lines.map((l) => inline(escape(l)));
+        if (!kind) return '<p>' + items.join('<br>') + '</p>';
+        return kind.open + items.map(kind.wrap).join(kind.join || '') + kind.close;
+      }).join('');
+    }).join('');
+  }
+
   function appendMessage(role, text) {
     const div = document.createElement('div');
     div.className = role === 'user' ? 'rc-msg rc-msg-user' : 'rc-msg rc-msg-assistant';
-    div.textContent = text;
+    if (role === 'user') {
+      div.textContent = text;
+    } else {
+      div.classList.add('rc-msg-formatted');
+      div.innerHTML = formatScoutReply(text);
+    }
     messagesEl.appendChild(div);
     messagesEl.scrollTop = messagesEl.scrollHeight;
   }
