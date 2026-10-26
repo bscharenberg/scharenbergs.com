@@ -575,6 +575,7 @@ footer a { color: var(--brown-light); text-decoration: none; }
   .topic-item { gap: 1rem; }
   .topic-tag { flex-shrink: 0; }
   .helltrack-card { grid-template-columns: 1fr !important; }
+  .agentos-outcomes { grid-template-columns: 1fr !important; }
   .tools-intro-grid { grid-template-columns: 1fr; }
   .sc-media-grid { grid-template-columns: 1fr !important; }
   #smartcookies [style*="grid-template-columns: repeat(2"] { grid-template-columns: 1fr !important; }
@@ -687,6 +688,36 @@ footer a { color: var(--brown-light); text-decoration: none; }
 .tools-footnote a:hover {
   color: #F6F8F5;
   text-decoration-color: #F6F8F5;
+}
+
+.agentos-card {
+  margin-bottom: 2.5rem;
+}
+.agentos-outcomes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.agentos-outcomes > div {
+  padding: 16px 18px;
+  border: 1px solid rgba(246, 248, 245, 0.08);
+  border-radius: 2px;
+}
+.agentos-outcome-label {
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #8AB885;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+.agentos-outcomes p {
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #A8BAA4;
+  margin: 0;
 }
 
 
@@ -1170,9 +1201,19 @@ footer a { color: var(--brown-light); text-decoration: none; }
     <h2 class="section-heading">What I've built with AI</h2>
  
     <div class="tools-intro">
-      <p>Two projects I've built and still run. One is a live product built by AI agents that I direct. The other packages a firm's sales judgment so any seller can use it.</p>
+      <p>Projects I've built and still run. The newest is the system my firm's AI agents now work from. The others are a live product built by AI agents that I direct, and a tool that packages a firm's sales judgment so any seller can use it.</p>
     </div>
  
+    <div class="reality-check-card agentos-card fade-up">
+      <div class="reality-check-label">KALLES GROUP</div>
+      <h3 class="reality-check-title">KG AgentOS: one source of truth for a firm's AI agents</h3>
+      <p class="reality-check-desc">Our AI agents were working from scattered, outdated copies of who we are and what we sell. I designed and built a single library of owned files that every agent reads from, so when the firm decides something, the agents reflect it.</p>
+      <div class="agentos-outcomes">
+        <div><div class="agentos-outcome-label">What changed</div><p>Every file has a named owner, and changes go through that owner. The firm's sales agent runs on it.</p></div>
+        <div><div class="agentos-outcome-label">Why it matters</div><p>Any agent, whatever AI tool it runs on, describes the firm the same way and works from what leadership has actually decided. The model moves with the firm when its tools change.</p></div>
+      </div>
+    </div>
+
     <div style="max-width: 1100px; margin: 0 auto 2.5rem;" class="fade-up">
       <div style="background: #0d0d0d; border-radius: 6px; padding: 1.75rem 2rem; display: grid; grid-template-columns: auto 1fr; gap: 1.5rem; align-items: start;" class="helltrack-card">
         <img src="trackwalk-icon.png" alt="Trackwalk logo" width="44" height="44" style="display: block; width: 44px; height: 44px; border-radius: 6px; flex-shrink: 0; margin-top: 2px;">
