@@ -558,37 +558,33 @@ section { padding: 6rem 4rem; }
 
 /* ─── PODCAST / THINKING ─── */
 #thinking { background: var(--cream); }
-.thinking-grid {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 3rem; max-width: 1100px; margin: 0 auto; align-items: start;
-}
+.thinking-block { max-width: 1160px; margin-top: 1rem; }
+.thinking-block + .thinking-block { margin-top: 3.5rem; }
 .thinking-col-title {
-  font-family: var(--serif); font-size: 1.1rem; font-weight: 500;
-  color: var(--ink); margin-bottom: 1.5rem; padding-bottom: 0.75rem;
-  border-bottom: 1px solid var(--tan);
+  font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+  font-weight: 500; color: var(--brown); margin-bottom: 0.75rem;
 }
-.topic-list { display: flex; flex-direction: column; gap: 0; }
-.topic-item {
-  padding: 1.1rem 0; border-bottom: 1px solid var(--tan);
-  display: flex; justify-content: space-between; align-items: center;
+.beliefs {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0 4rem;
+  border-top: 1px solid var(--tan);
 }
-.topic-name { font-size: 0.92rem; color: var(--brown-dark); font-weight: 500; }
-.topic-tag {
-  font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase;
-  color: var(--brown-light); background: var(--parchment);
-  padding: 0.25rem 0.65rem; border-radius: 2px;
+.belief { padding: 1.75rem 0; border-bottom: 1px solid var(--tan); }
+.belief-title {
+  font-family: var(--serif); font-size: clamp(1.4rem, 2.2vw, 1.75rem); font-weight: 500; font-style: italic;
+  color: var(--ink); line-height: 1.25; margin-bottom: 0.6rem;
 }
-.values-list { display: flex; flex-direction: column; gap: 1.2rem; }
-.value-item { display: flex; gap: 1rem; align-items: flex-start; }
-.value-mark {
-  width: 6px; height: 6px; border-radius: 50%; background: var(--accent);
-  flex-shrink: 0; margin-top: 0.6rem;
+.belief-text { font-size: 0.92rem; color: var(--brown-dark); line-height: 1.75; max-width: 480px; }
+.topic-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--tan); }
+.topic-row {
+  display: grid; grid-template-columns: minmax(0, 1fr) 20rem; gap: 2rem; align-items: baseline;
+  padding: 1.1rem 0; border-bottom: 1px solid var(--tan); text-decoration: none;
 }
-.value-text { font-size: 0.9rem; color: var(--brown-dark); line-height: 1.7; }
-.value-text strong {
-  font-weight: 500; color: var(--ink);
-  font-family: var(--serif); font-style: italic;
+.topic-name { font-family: var(--serif); font-size: 1.05rem; color: var(--ink); }
+.topic-proof { font-size: 0.85rem; color: var(--accent); text-align: right; }
+.topic-row:hover .topic-proof, .topic-row:focus-visible .topic-proof {
+  text-decoration: underline; text-decoration-color: var(--sand); text-underline-offset: 3px;
 }
+.topic-row:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 
 /* ─── CONTACT ─── */
 #contact {
@@ -675,9 +671,10 @@ footer a { color: var(--brown-light); text-decoration: none; }
   .xp-head { position: static; }
   .xp-role { grid-template-columns: 1fr; gap: 0.3rem; }
   .xp-when { padding-top: 0; }
-  .thinking-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-  .topic-item { gap: 1rem; }
-  .topic-tag { flex-shrink: 0; }
+  .beliefs { grid-template-columns: 1fr; }
+  .belief { padding: 1.4rem 0; }
+  .topic-row { grid-template-columns: 1fr; gap: 0.3rem; }
+  .topic-proof { text-align: left; }
   .agentos-outcomes { grid-template-columns: 1fr !important; }
   .tools-intro-grid { grid-template-columns: 1fr; }
   .sc-room { margin: 2rem 0 2.5rem; }
@@ -1739,7 +1736,7 @@ footer a { color: var(--brown-light); text-decoration: none; }
           <div class="story-fact"><span class="fact-n">4</span><span class="fact-l">Executive panels designed and moderated for Smart Cookies</span></div>
       </aside>
     </div>
-    <div class="story-row fade-up">
+    <div class="story-row fade-up" id="story-ethics">
       <div class="story-main">
         <h3 class="ch-title">The ethical layer</h3>
         <p class="ch-text">I'm a lay pastor and a dad, and both matter a lot to me. My kids are getting older. We've traded garage bike builds for snowboarding and skiing together, and I'm hoping for a lot more of that. I had a hip resurfacing a while back and I'm still working my way back to strength. I mention it because it's the same thing I'd tell anyone navigating a hard season: you figure out what you're actually made of when the path is slower than you'd like. That shapes how I give advice. I'll tell you what I actually think, even when it isn't what you were hoping to hear.</p>
@@ -1755,26 +1752,38 @@ footer a { color: var(--brown-light); text-decoration: none; }
 <section id="thinking">
   <div class="section-label fade-up">Thinking</div>
   <h2 class="section-title fade-up">Things I keep talking about</h2>
-  <div class="thinking-grid">
-    <div>
-      <div class="thinking-col-title fade-up">Topics I get pulled into</div>
-      <div class="topic-list">
-        <div class="topic-item fade-up"><span class="topic-name">Helping leaders decide what to elevate and what to defer</span><span class="topic-tag">Strategy</span></div>
-        <div class="topic-item fade-up"><span class="topic-name">How services companies should think about GTM</span><span class="topic-tag">GTM</span></div>
-        <div class="topic-item fade-up"><span class="topic-name">Getting leadership buy-in on hard initiatives</span><span class="topic-tag">Leadership</span></div>
-        <div class="topic-item fade-up"><span class="topic-name">Building trust in technical sales cycles</span><span class="topic-tag">Partnerships</span></div>
-        <div class="topic-item fade-up"><span class="topic-name">Doing tech work with an ethical backbone</span><span class="topic-tag">Ethics</span></div>
+
+  <div class="thinking-block">
+    <h3 class="thinking-col-title fade-up">What I believe</h3>
+    <div class="beliefs">
+      <div class="belief fade-up">
+        <h4 class="belief-title">Clarity over comfort.</h4>
+        <p class="belief-text">The most useful thing I can do is help someone see their situation clearly, even when that's uncomfortable.</p>
+      </div>
+      <div class="belief fade-up">
+        <h4 class="belief-title">Enthusiasm isn't a strategy.</h4>
+        <p class="belief-text">Most failed projects start with excitement and no clear owner of the problem they're supposed to solve. I'd rather slow down in week one than clean it up in month six.</p>
+      </div>
+      <div class="belief fade-up">
+        <h4 class="belief-title">Character and competence.</h4>
+        <p class="belief-text">The leaders I respect most are unusually good at their jobs and unusually serious about doing right by people. I don't think those are in tension.</p>
+      </div>
+      <div class="belief fade-up">
+        <h4 class="belief-title">Trust is the product.</h4>
+        <p class="belief-text">In services, in partnerships, in any relationship where you're asking people to take a risk on your judgment, you are always building or burning trust. There's no neutral ground.</p>
       </div>
     </div>
-    <div>
-      <div class="thinking-col-title fade-up">What I believe</div>
-      <div class="values-list">
-        <div class="value-item fade-up"><div class="value-mark"></div><div class="value-text"><strong>Clarity over comfort.</strong> The most useful thing I can do is help someone see their situation clearly, even when that's uncomfortable.</div></div>
-        <div class="value-item fade-up"><div class="value-mark"></div><div class="value-text"><strong>Enthusiasm isn't a strategy.</strong> Most failed projects start with excitement and no clear owner of the problem they're supposed to solve. I'd rather slow down in week one than clean it up in month six.</div></div>
-        <div class="value-item fade-up"><div class="value-mark"></div><div class="value-text"><strong>Character and competence.</strong> The leaders I respect most are unusually good at their jobs and unusually serious about doing right by people. I don't think those are in tension.</div></div>
-        <div class="value-item fade-up"><div class="value-mark"></div><div class="value-text"><strong>Trust is the product.</strong> In services, in partnerships, in any relationship where you're asking people to take a risk on your judgment, you are always building or burning trust. There's no neutral ground.</div></div>
-      </div>
-    </div>
+  </div>
+
+  <div class="thinking-block fade-up">
+    <h3 class="thinking-col-title">Topics I get pulled into</h3>
+    <ul class="topic-list">
+      <li><a class="topic-row" href="#case-ai-workflows"><span class="topic-name">Helping leaders decide what to elevate and what to defer</span><span class="topic-proof">Case note: starting with one workflow <span aria-hidden="true">→</span></span></a></li>
+      <li><a class="topic-row" href="#expertise"><span class="topic-name">How services companies should think about GTM</span><span class="topic-proof">What I do: GTM &amp; Partnerships <span aria-hidden="true">→</span></span></a></li>
+      <li><a class="topic-row" href="#case-ai-launch"><span class="topic-name">Getting leadership buy-in on hard initiatives</span><span class="topic-proof">Case note: pressure-testing an AI launch <span aria-hidden="true">→</span></span></a></li>
+      <li><a class="topic-row" href="#role-kalles-growth"><span class="topic-name">Building trust in technical sales cycles</span><span class="topic-proof">Experience: the $0 to $5M account <span aria-hidden="true">→</span></span></a></li>
+      <li><a class="topic-row" href="#story-ethics"><span class="topic-name">Doing tech work with an ethical backbone</span><span class="topic-proof">The story: the ethical layer <span aria-hidden="true">→</span></span></a></li>
+    </ul>
   </div>
 </section>
 
