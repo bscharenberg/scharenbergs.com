@@ -359,6 +359,48 @@ section { padding: 6rem 4rem; }
   .do-proof { grid-column: 3; grid-row: 1 / span 2; align-self: start; }
 }
 
+/* ─── SMART COOKIES ─── */
+#smartcookies .section-sub { max-width: 640px; }
+.sc-room { margin: 2.5rem 0 3.5rem; max-width: 1160px; }
+.sc-room-photo { aspect-ratio: 1940 / 830; overflow: hidden; border-radius: 4px; }
+/* The photo is a video still; this crop keeps its burned-in caption out of view. */
+.sc-room-photo img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: center top; }
+.sc-room figcaption { margin-top: 0.7rem; font-size: 0.8rem; letter-spacing: 0.03em; color: var(--brown); }
+.sc-feature {
+  display: grid; grid-template-columns: 1.25fr 1fr; gap: 3rem; align-items: center;
+  max-width: 1160px; margin-bottom: 3.5rem;
+}
+.sc-feature-photo { display: block; border-radius: 4px; overflow: hidden; }
+.sc-feature-photo img { width: 100%; height: auto; display: block; transition: transform 0.4s ease; }
+.sc-feature-photo:hover img { transform: scale(1.015); }
+.sc-feature-title {
+  font-family: var(--serif); font-size: 1.6rem; font-weight: 500;
+  color: var(--ink); line-height: 1.25; margin-bottom: 0.8rem;
+}
+.sc-feature-body p { font-size: 0.95rem; color: var(--brown-dark); line-height: 1.8; margin-bottom: 1.1rem; }
+.sc-link {
+  display: inline-block; padding: 0.6rem 0; min-height: 44px;
+  font-size: 0.88rem; font-weight: 500; color: var(--accent);
+  text-decoration: underline; text-decoration-color: var(--sand); text-underline-offset: 4px;
+}
+.sc-link:hover { text-decoration-color: var(--accent); }
+.sc-index { max-width: 1160px; }
+.sc-index-title {
+  font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+  font-weight: 500; color: var(--brown); margin-bottom: 0.75rem;
+}
+.sc-sessions { list-style: none; margin: 0 0 1rem; padding: 0; border-top: 1px solid var(--tan); }
+.sc-sessions a {
+  display: grid; grid-template-columns: 10rem 1fr 12rem; gap: 2rem; align-items: baseline;
+  padding: 1.25rem 0; border-bottom: 1px solid var(--tan); text-decoration: none;
+}
+.sc-sessions a:hover .sc-name { text-decoration: underline; text-decoration-color: var(--sand); text-underline-offset: 4px; }
+.sc-sessions a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.sc-when { font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--brown); }
+.sc-name { display: block; font-family: var(--serif); font-size: 1.1rem; font-weight: 500; color: var(--ink); margin-bottom: 0.3rem; }
+.sc-desc { display: block; font-size: 0.88rem; color: var(--brown-dark); line-height: 1.7; }
+.sc-go { font-size: 0.85rem; font-weight: 500; color: var(--accent); text-align: right; }
+
 /* ─── EXPERIENCE ─── */
 #experience { background: var(--parchment); }
 .timeline { max-width: 800px; margin: 0 auto; }
@@ -648,8 +690,10 @@ footer a { color: var(--brown-light); text-decoration: none; }
   .topic-tag { flex-shrink: 0; }
   .agentos-outcomes { grid-template-columns: 1fr !important; }
   .tools-intro-grid { grid-template-columns: 1fr; }
-  .sc-media-grid { grid-template-columns: 1fr !important; }
-  #smartcookies [style*="grid-template-columns: repeat(2"] { grid-template-columns: 1fr !important; }
+  .sc-room { margin: 2rem 0 2.5rem; }
+  .sc-feature { grid-template-columns: 1fr; gap: 1.25rem; margin-bottom: 2.5rem; }
+  .sc-sessions a { grid-template-columns: 1fr; gap: 0.35rem; }
+  .sc-go { text-align: left; }
   .client-row { margin-top: 1rem; }
   footer { flex-direction: column; gap: 0.5rem; text-align: center; }
 }
@@ -1297,46 +1341,60 @@ footer a { color: var(--brown-light); text-decoration: none; }
   <h2 class="section-title fade-up">Hosting AI conversations with leaders from Microsoft and Tableau</h2>
   <p class="section-sub fade-up">Smart Cookies is Kalles Group's invitation-only executive panel series and podcast on AI, security, risk, and leadership. I helped launch it in 2024 and have hosted every live event since. I design each program, interview and prep the panelists, and moderate the conversation. The guests are practitioners from Tableau, Nordstrom, PitchBook, the Gates Foundation, Microsoft, and beyond, and the goal is always the same: what's actually happening, not what sounds good on a slide deck.</p>
 
-  <div style="max-width: 1100px; margin: 0 auto 2.5rem; display: grid; grid-template-columns: 1.315fr 1fr; gap: 1.5rem; align-items: start;" class="fade-up sc-media-grid">
-    <div class="sc-panel-photo" style="border-radius: 4px; overflow: hidden; position: relative; aspect-ratio: 1940 / 830;">
-      <img src="smart-cookies-panel-wide.jpg" alt="Bryon moderating a Smart Cookies panel with four guests, the event title on screen behind them" style="position: absolute; inset: 0; width: 100%; height: 100%; display: block; object-fit: cover; object-position: center top;" />
+  <figure class="sc-room fade-up">
+    <div class="sc-room-photo">
+      <img src="smart-cookies-panel-wide.jpg" alt="Bryon moderating a Smart Cookies panel with four guests, the event title on screen behind them" width="1940" height="1072" loading="lazy">
     </div>
-    <a href="https://open.spotify.com/episode/73gWvaXUY7BzkCUjAw4nS0" target="_blank" rel="noopener" class="sc-episode-thumb" style="display: block; border-radius: 4px; overflow: hidden; position: relative; aspect-ratio: 16 / 9;">
-      <img src="smart-cookies-julie-averill.jpg" alt="Smart Cookies podcast: Bryon Scharenberg with Julie Averill, former CIO of Lululemon" width="1280" height="720" loading="lazy" style="position: absolute; inset: 0; width: 100%; height: 100%; display: block; object-fit: cover;">
-      <span style="position: absolute; right: 10px; bottom: 10px; background: rgba(13,13,13,0.78); color: #fff; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.03em; padding: 0.35rem 0.7rem; border-radius: 3px;">Listen on Spotify ↗</span>
-    </a>
-  </div>
+    <figcaption>Moderating <em>AI Ambition Is Outrunning Execution</em>, a live panel in Seattle, Sept 2026</figcaption>
+  </figure>
 
-  <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5px; background: var(--tan); border: 1px solid var(--tan); border-radius: 4px; overflow: hidden; max-width: 1100px; margin: 0 auto 2.5rem;" class="fade-up">
-    <a href="https://kallesgroup.com/podcast/ai-ambition-is-outrunning-execution-live-panel-september-2026-seattle/" target="_blank" style="background: var(--warm-white); padding: 1.75rem; text-decoration: none; display: block; transition: background 0.2s;" onmouseover="this.style.background='var(--parchment)'" onmouseout="this.style.background='var(--warm-white)'">
-      <div style="font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); font-weight: 500; margin-bottom: 0.6rem;">Live panel · Sept 2026</div>
-      <div style="font-family: var(--serif); font-size: 1rem; font-weight: 500; color: var(--ink); margin-bottom: 0.5rem; line-height: 1.35;">AI Ambition Is Outrunning Execution</div>
-      <div style="font-size: 0.82rem; color: var(--brown); line-height: 1.6;">With Kylie Alfano (Tableau), Tom Van Buskirk (PitchBook), Andy Stetzler (Gates Foundation), and Lee Peterson (Nordstrom). What actually happens when you roll AI out across an organization.</div>
-      <div style="font-size: 0.75rem; color: var(--accent); margin-top: 0.75rem; font-weight: 500;">Watch and read recap ↗</div>
+  <article class="sc-feature fade-up">
+    <a class="sc-feature-photo" href="https://kallesgroup.com/podcast/smart-cookies-a-smart-conversation-with-niamh-vianney-muldoon-ciso/" target="_blank" rel="noopener" aria-label="Listen to the conversation with Niamh Muldoon">
+      <img src="smart-cookies-niamh-muldoon.jpg" alt="Niamh Muldoon speaking on the Smart Cookies podcast while Bryon listens" width="1280" height="701" loading="lazy">
     </a>
-    <a href="https://kallesgroup.com/podcast/beyond-ai-hype-julie-averill-on-strategy-trust-and-transformation/" target="_blank" style="background: var(--warm-white); padding: 1.75rem; text-decoration: none; display: block; transition: background 0.2s;" onmouseover="this.style.background='var(--parchment)'" onmouseout="this.style.background='var(--warm-white)'">
-      <div style="font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); font-weight: 500; margin-bottom: 0.6rem;">Podcast · Oct 2026</div>
-      <div style="font-family: var(--serif); font-size: 1rem; font-weight: 500; color: var(--ink); margin-bottom: 0.5rem; line-height: 1.35;">A Plan Is Not an AI Strategy</div>
-      <div style="font-size: 0.82rem; color: var(--brown); line-height: 1.6;">A conversation with Julie Averill, former CIO of Lululemon, on why AI is a transformation question and not just an efficiency one, and why people are still the hardest part.</div>
-      <div style="font-size: 0.75rem; color: var(--accent); margin-top: 0.75rem; font-weight: 500;">Listen ↗</div>
-    </a>
-    <a href="https://kallesgroup.com/podcast/smart-cookies-a-smart-conversation-with-niamh-vianney-muldoon-ciso/" target="_blank" style="background: var(--warm-white); padding: 1.75rem; text-decoration: none; display: block; transition: background 0.2s;" onmouseover="this.style.background='var(--parchment)'" onmouseout="this.style.background='var(--warm-white)'">
-      <div style="font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); font-weight: 500; margin-bottom: 0.6rem;">Podcast · Mar 2026</div>
-      <div style="font-family: var(--serif); font-size: 1rem; font-weight: 500; color: var(--ink); margin-bottom: 0.5rem; line-height: 1.35;">Trust and Empowerment in Cybersecurity</div>
-      <div style="font-size: 0.82rem; color: var(--brown); line-height: 1.6;">A conversation with Niamh Muldoon, EMEA CISO and Innovation Lead at BNY, on why security has to move past defense and into building trust, and what AI adoption asks of security leaders.</div>
-      <div style="font-size: 0.75rem; color: var(--accent); margin-top: 0.75rem; font-weight: 500;">Listen ↗</div>
-    </a>
-    <a href="https://kallesgroup.com/from-tool-to-teammate-smart-cookies-recap-on-leading-with-ai/" target="_blank" style="background: var(--warm-white); padding: 1.75rem; text-decoration: none; display: block; transition: background 0.2s;" onmouseover="this.style.background='var(--parchment)'" onmouseout="this.style.background='var(--warm-white)'">
-      <div style="font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); font-weight: 500; margin-bottom: 0.6rem;">Live panel · June 2025</div>
-      <div style="font-family: var(--serif); font-size: 1rem; font-weight: 500; color: var(--ink); margin-bottom: 0.5rem; line-height: 1.35;">From Tool to Teammate: Leading with AI</div>
-      <div style="font-size: 0.82rem; color: var(--brown); line-height: 1.6;">With Eli Coon (Microsoft Copilot Studio), Zach Koch (Ultravox), and Mike Anderson (AILayer). What it takes to make AI part of how work gets done.</div>
-      <div style="font-size: 0.75rem; color: var(--accent); margin-top: 0.75rem; font-weight: 500;">Read recap ↗</div>
-    </a>
-  </div>
+    <div class="sc-feature-body">
+      <div class="case-label">Featured conversation · Podcast, Mar 2026</div>
+      <h3 class="sc-feature-title">Trust and Empowerment in Cybersecurity</h3>
+      <p>A conversation with Niamh Muldoon, EMEA CISO and Innovation Lead at BNY, on why security has to move past defense and into building trust, and what AI adoption asks of security leaders.</p>
+      <a class="sc-link" href="https://kallesgroup.com/podcast/smart-cookies-a-smart-conversation-with-niamh-vianney-muldoon-ciso/" target="_blank" rel="noopener">Listen to the episode ↗</a>
+    </div>
+  </article>
 
-  <div style="max-width: 1100px; margin: 0 auto; display: flex; gap: 1rem; flex-wrap: wrap;" class="fade-up">
-    <a href="https://open.spotify.com/episode/73gWvaXUY7BzkCUjAw4nS0" target="_blank" class="btn-ghost">Julie Averill episode on Spotify ↗</a>
-    <a href="https://kallesgroup.com/smart-cookies/" target="_blank" class="btn-ghost">All Smart Cookies events ↗</a>
+  <div class="sc-index fade-up">
+    <h3 class="sc-index-title">More conversations</h3>
+    <ol class="sc-sessions">
+      <li>
+        <a href="https://kallesgroup.com/podcast/beyond-ai-hype-julie-averill-on-strategy-trust-and-transformation/" target="_blank" rel="noopener">
+          <span class="sc-when">Podcast · Oct 2026</span>
+          <span class="sc-what">
+            <span class="sc-name">A Plan Is Not an AI Strategy</span>
+            <span class="sc-desc">A conversation with Julie Averill, former CIO of Lululemon, on why AI is a transformation question and not just an efficiency one, and why people are still the hardest part.</span>
+          </span>
+          <span class="sc-go">Listen ↗</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://kallesgroup.com/podcast/ai-ambition-is-outrunning-execution-live-panel-september-2026-seattle/" target="_blank" rel="noopener">
+          <span class="sc-when">Live panel · Sept 2026</span>
+          <span class="sc-what">
+            <span class="sc-name">AI Ambition Is Outrunning Execution</span>
+            <span class="sc-desc">With Kylie Alfano (Tableau), Tom Van Buskirk (PitchBook), Andy Stetzler (Gates Foundation), and Lee Peterson (Nordstrom). What actually happens when you roll AI out across an organization.</span>
+          </span>
+          <span class="sc-go">Watch and read recap ↗</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://kallesgroup.com/from-tool-to-teammate-smart-cookies-recap-on-leading-with-ai/" target="_blank" rel="noopener">
+          <span class="sc-when">Live panel · June 2025</span>
+          <span class="sc-what">
+            <span class="sc-name">From Tool to Teammate: Leading with AI</span>
+            <span class="sc-desc">With Eli Coon (Microsoft Copilot Studio), Zach Koch (Ultravox), and Mike Anderson (AILayer). What it takes to make AI part of how work gets done.</span>
+          </span>
+          <span class="sc-go">Read recap ↗</span>
+        </a>
+      </li>
+    </ol>
+    <a class="sc-link" href="https://kallesgroup.com/smart-cookies/" target="_blank" rel="noopener">All Smart Cookies events ↗</a>
   </div>
 </section>
 <!-- EXPERIENCE -->
