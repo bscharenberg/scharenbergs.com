@@ -147,7 +147,9 @@ nav {
   color: var(--accent); font-weight: 500; margin-bottom: 1.8rem;
 }
 .hero-eyebrow span { display: block; width: 28px; height: 1.5px; background: var(--accent); }
-.hero-eyebrow .eyebrow-dot { display: inline; }
+.hero-eyebrow .eyebrow-dot { display: none; }
+.hero-eyebrow .eyebrow-part { display: block; }
+.hero-eyebrow .eyebrow-part + .eyebrow-part { margin-top: 0.35rem; }
 /* Keep hero content above the background glow, including on phones where the columns use display: contents. */
 .hero-left > *, .hero-right > * { position: relative; z-index: 1; }
 .hero-name {
@@ -164,12 +166,14 @@ nav {
   color: var(--brown-dark); max-width: 500px;
   margin-bottom: 1.5rem; line-height: 1.65;
 }
-.hero-sub {
-  font-size: 0.95rem; color: var(--brown);
-  max-width: 460px; margin-bottom: 2.8rem; line-height: 1.85;
-}
 .hero-tagline { margin-bottom: 2.4rem; }
 .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+.hero-built { margin-top: 1.5rem; font-size: 0.88rem; color: var(--brown-dark); }
+.hero-built a {
+  color: var(--accent); font-weight: 500;
+  text-decoration: underline; text-decoration-color: var(--sand); text-underline-offset: 3px;
+}
+.hero-built a:hover { text-decoration-color: var(--accent); }
 .btn-primary {
   background: var(--accent); color: #fff;
   padding: 0.8rem 1.8rem; border-radius: var(--radius);
@@ -189,21 +193,6 @@ nav {
 .hero-right {
   display: flex; flex-direction: column; gap: 1.5rem;
   position: relative; z-index: 1;
-}
-.hero-card {
-  background: var(--warm-white);
-  border: 1px solid var(--tan);
-  border-radius: 4px; padding: 1.5rem 1.75rem;
-  transition: border-color 0.2s;
-}
-.hero-card:hover { border-color: var(--sand); }
-.hero-card-label {
-  font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--accent); font-weight: 500; margin-bottom: 0.5rem;
-}
-.hero-card-text {
-  font-family: var(--serif); font-size: 1rem; font-style: italic;
-  color: var(--brown-dark); line-height: 1.55;
 }
 .hero-stats { margin: 0; border-top: 1px solid var(--tan); }
 .stat-item {
@@ -323,6 +312,13 @@ section { padding: 6rem 4rem; }
 .case-title {
   font-family: var(--serif); font-size: 1.45rem; font-weight: 500;
   color: var(--ink); line-height: 1.3; margin-bottom: 0.8rem;
+}
+.case-role {
+  font-size: 0.92rem; color: var(--ink); line-height: 1.6; margin-bottom: 0.9rem;
+  border-left: 2px solid var(--accent-light); padding-left: 0.9rem;
+}
+.case-role span {
+  display: block; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--brown); margin-bottom: 0.15rem;
 }
 .case-lead { font-size: 0.95rem; color: var(--brown-dark); line-height: 1.8; margin-bottom: 1.25rem; }
 .case-facts { border-top: 1px solid var(--tan); margin-bottom: 1rem; }
@@ -633,15 +629,14 @@ footer a { color: var(--brown-light); text-decoration: none; }
   .hero { display: flex; flex-direction: column; align-items: stretch; gap: 0; min-height: 0; padding: 6.5rem 1.5rem 3rem; }
   .hero-left, .hero-right { display: contents; }
   .hero-eyebrow { order: 1; letter-spacing: 0.08em; font-size: 0.68rem; margin-bottom: 1.2rem; }
-  .hero-eyebrow span, .hero-eyebrow .eyebrow-dot { display: none; }
-  .hero-eyebrow .eyebrow-part { display: block; }
-  .hero-eyebrow .eyebrow-part + .eyebrow-part { margin-top: 0.35rem; }
+  .hero-eyebrow span { display: none; }
   .hero-name { order: 2; margin-bottom: 1.5rem; }
   .hero-figure { order: 3; margin-bottom: 1.5rem; }
   .hero-tagline { order: 4; margin-bottom: 1.75rem; }
-  .hero-ctas { order: 5; margin-bottom: 2.25rem; }
-  .hero-stats { order: 6; margin-bottom: 1.75rem; }
-  .hero-guests { order: 7; border-top: none; padding-top: 0; }
+  .hero-ctas { order: 5; margin-bottom: 1rem; }
+  .hero-built { order: 6; margin: 0 0 2rem; }
+  .hero-stats { order: 7; margin-bottom: 1.75rem; }
+  .hero-guests { order: 8; border-top: none; padding-top: 0; }
   .stat-item { grid-template-columns: 4.75rem 1fr; }
   .intro-band { grid-template-columns: 1fr; gap: 1.5rem; padding-top: 2.5rem; padding-bottom: 2.5rem; }
   .intro-bio, .intro-care { grid-column: 1; grid-row: auto; }
@@ -850,7 +845,7 @@ footer a { color: var(--brown-light); text-decoration: none; }
   .agentos-figure figcaption { text-align: center; }
 }
 @media (max-width: 600px) {
-  .agentos-figure { padding: 16px 12px 12px; margin-left: -16px; margin-right: -16px; }
+  .agentos-figure { padding: 14px 10px 12px; margin-left: -8px; margin-right: -8px; }
 }
 .agentos-outcomes {
   display: grid;
@@ -858,9 +853,8 @@ footer a { color: var(--brown-light); text-decoration: none; }
   gap: 16px;
 }
 .agentos-outcomes > div {
-  padding: 16px 18px;
-  border: 1px solid rgba(246, 248, 245, 0.08);
-  border-radius: 2px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(246, 248, 245, 0.12);
 }
 .agentos-outcome-label {
   font-family: "DM Sans", system-ui, sans-serif;
@@ -1142,7 +1136,7 @@ footer a { color: var(--brown-light); text-decoration: none; }
     border: none;
   }
   .reality-check-card {
-    padding: 28px 24px 32px;
+    padding: 22px 16px 26px;
   }
   .reality-check-title {
     font-size: 24px;
@@ -1176,9 +1170,9 @@ footer a { color: var(--brown-light); text-decoration: none; }
   <ul class="nav-links" id="navLinks">
     <li><a href="#expertise">What I Do</a></li>
     <li><a href="#smartcookies">Smart Cookies</a></li>
-    <li><a href="#experience">Experience</a></li>
     <li><a href="#tools">AI Work</a></li>
-    <li><a href="#story">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#story">Story</a></li>
     <li><a href="#thinking">Thinking</a></li>
     <li><a href="#life">Life</a></li>
     <li><a href="#contact" class="nav-cta">Let's Talk</a></li>
@@ -1189,7 +1183,7 @@ footer a { color: var(--brown-light); text-decoration: none; }
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-left">
-    <div class="hero-eyebrow"><span></span><b><b class="eyebrow-part">Director of Growth & GTM Strategy</b><b class="eyebrow-part"><i class="eyebrow-dot"> · </i>AI & Security · Seattle, WA</b></b></div>
+    <div class="hero-eyebrow"><span></span><b><b class="eyebrow-part">Director of Growth & GTM Strategy · Kalles Group</b><b class="eyebrow-part"><i class="eyebrow-dot"> · </i>AI & Security · Seattle, WA</b></b></div>
     <h1 class="hero-name">
       I listen well.<br><em>That turns out to be useful.</em>
     </h1>
@@ -1200,6 +1194,7 @@ footer a { color: var(--brown-light); text-decoration: none; }
       <a href="#tools" class="btn-primary">See what I've built</a>
       <a href="#story" class="btn-ghost">Read the story</a>
     </div>
+    <p class="hero-built">What I've built with AI: <a href="#agentos">KG AgentOS</a> · <a href="#trackwalk">Trackwalk</a> · <a href="#scout">Scout</a></p>
   </div>
   <div class="hero-right">
     <figure class="hero-figure fade-up">
@@ -1266,9 +1261,9 @@ footer a { color: var(--brown-light); text-decoration: none; }
     <article class="case-note fade-up" id="case-ai-workflows">
       <div class="case-label">Case note · A global technology company</div>
       <h3 class="case-title">Freeing a team to focus on its partners</h3>
+      <p class="case-role"><span>My role</span> Account lead. I scoped the work, assembled the team, and oversaw delivery. The engineers built the system.</p>
       <p class="case-lead">An AI automation system took manual processing off a partner-facing team's plate, so they could put their time into the partners they serve. It began as an advisory proof of concept and grew into a $300K engagement.</p>
       <dl class="case-facts">
-        <div><dt>My role</dt><dd>Account lead. I scoped the work, assembled the team, and oversaw delivery. The engineers built the system.</dd></div>
         <div><dt>Engagement</dt><dd>$300K, grown from an advisory proof of concept</dd></div>
         <div><dt>First result</dt><dd>Human-in-the-loop model validated on one workflow in 30 days</dd></div>
       </dl>
@@ -1290,9 +1285,9 @@ footer a { color: var(--brown-light); text-decoration: none; }
     <article class="case-note fade-up" id="case-ai-launch">
       <div class="case-label">Case note · A financial services client</div>
       <h3 class="case-title">Pressure-testing an AI launch before it scaled</h3>
+      <p class="case-role"><span>My role</span> Shaped the engagement, assembled the specialists, and facilitated the session</p>
       <p class="case-lead">In one working session, an independent review surfaced a significant security weakness in a client's AI architecture before it scaled.</p>
       <dl class="case-facts">
-        <div><dt>My role</dt><dd>Shaped the engagement, assembled the specialists, and facilitated the session</dd></div>
         <div><dt>Format</dt><dd>Architecture and security discovery session</dd></div>
         <div><dt>Specialists</dt><dd>Two principal-level experts, one in AI architecture and one in offensive security</dd></div>
       </dl>
@@ -1377,80 +1372,6 @@ footer a { color: var(--brown-light); text-decoration: none; }
     <a class="sc-link" href="https://kallesgroup.com/smart-cookies/" target="_blank" rel="noopener">All Smart Cookies events ↗</a>
   </div>
 </section>
-<!-- EXPERIENCE -->
-<section id="experience">
-  <div class="section-label fade-up">Experience</div>
-  <h2 class="section-title fade-up">From recruiting manager to director of growth</h2>
-
-  <div class="xp-chapter fade-up">
-    <div class="xp-head">
-      <h3 class="xp-org">Enterprise tech</h3>
-      <div class="xp-span">2018 to present</div>
-      <div class="xp-span">Kalles Group · Seattle</div>
-      <p class="xp-note">Three roles at one firm, each building on the last.</p>
-    </div>
-    <ol class="xp-roles">
-      <li class="xp-role" id="role-kalles-growth">
-        <div class="xp-when">May 2022 – Present</div>
-        <div class="xp-body">
-          <h4 class="xp-title">Director of Growth & GTM Strategy</h4>
-          <p class="xp-desc">Grew one account from zero to $5M across six buying centers over three years. What I learned: enterprise buyers don't want a vendor, they want someone they can trust, who they like, and who will be honest with them when it matters. I also helped launch Smart Cookies, our executive panel series, and moderate every panel.</p>
-        </div>
-      </li>
-      <li class="xp-role">
-        <div class="xp-when">Aug 2019 – May 2022</div>
-        <div class="xp-body">
-          <h4 class="xp-title">Head of Recruiting & Marketing</h4>
-          <p class="xp-desc">Hired Principal Engineers for AI-powered security products before AI was the thing everyone was hiring for. Spent a lot of time in rooms with technical leaders, helping them craft a narrative that would actually resonate with the people they wanted to hire.</p>
-        </div>
-      </li>
-      <li class="xp-role">
-        <div class="xp-when">Oct 2018 – Aug 2019</div>
-        <div class="xp-body">
-          <h4 class="xp-title">Recruiting Manager</h4>
-          <p class="xp-desc">Led recruiting for engineering, cybersecurity, and TPM roles at Fortune 500 clients. Managed 5 direct reports, conducted 400+ interviews, and closed 30+ hires.</p>
-        </div>
-      </li>
-    </ol>
-  </div>
-
-  <div class="xp-chapter fade-up">
-    <div class="xp-head">
-      <h3 class="xp-org">Nonprofit leadership</h3>
-      <div class="xp-span">2005 to 2017</div>
-      <div class="xp-span">Venezuela · Seattle · India</div>
-      <p class="xp-note">More than a decade of nonprofit work, where I learned to build trust with people very different from me.</p>
-    </div>
-    <ol class="xp-roles">
-      <li class="xp-role">
-        <div class="xp-when">Dec 2013 – Jun 2017</div>
-        <div class="xp-body">
-          <h4 class="xp-title">Director, India Partnership</h4>
-          <div class="xp-co">CRU & Global Leadership Forum · Karnataka, India</div>
-          <p class="xp-desc">Led a core team of 7 and directed visiting teams of 20+. Partnered with Manipal University on a flagship leadership program, with a $500K program budget. Three and a half years of learning how to build trust across language, religion, class, and generation. The skill I still use the most.</p>
-        </div>
-      </li>
-      <li class="xp-role">
-        <div class="xp-when">Dec 2007 – Dec 2013</div>
-        <div class="xp-body">
-          <h4 class="xp-title">Senior Staff</h4>
-          <div class="xp-co">CRU · Seattle, WA</div>
-          <p class="xp-desc">Led fund development as a missionary. Spent years initiating conversations about faith and meaning with strangers, which taught me how to talk to people about things that matter without making it weird. By the end I could tell within the first five minutes whether a conversation was going somewhere real. Most of my instincts about enterprise relationship-building were shaped here, long before I ever sat in a B2B sales meeting.</p>
-        </div>
-      </li>
-      <li class="xp-role">
-        <div class="xp-when">2005 – 2007</div>
-        <div class="xp-body">
-          <h4 class="xp-title">Team Leader / Outreach Coordinator</h4>
-          <div class="xp-co">Vida Estudiantil · Mérida, Venezuela</div>
-          <p class="xp-desc">First leadership role, first real job, done in a second language in a country I'd never been to. Co-led a multinational, bilingual team of 15. Built a local volunteer base of 25+ Venezuelans, many of whom are still leading the engagement today.</p>
-        </div>
-      </li>
-    </ol>
-  </div>
-</section>
-
-
 <!-- AI TOOLS -->
 <section id="tools" class="section">
   <div class="container">
@@ -1461,7 +1382,7 @@ footer a { color: var(--brown-light); text-decoration: none; }
       <p>Three layers of the same work, from the foundation up. KG AgentOS is the context layer my firm's AI agents work from, Trackwalk is a live product an agent team builds and keeps running, and Scout is a demo agent you can try.</p>
     </div>
  
-    <div class="reality-check-card agentos-card fade-up">
+    <div class="reality-check-card agentos-card fade-up" id="agentos">
       <div class="reality-check-label">FOUNDATION · KALLES GROUP</div>
       <h3 class="reality-check-title">KG AgentOS: one source of truth for a firm's AI agents</h3>
       <p class="reality-check-desc">Our AI agents were working from scattered, outdated copies of who we are and what we sell. I designed and built a single library of owned files that every agent reads from, so when the firm decides something, the agents reflect it.</p>
@@ -1640,7 +1561,7 @@ footer a { color: var(--brown-light); text-decoration: none; }
       </div>
     </div>
 
-    <div class="reality-check-card trackwalk-card fade-up">
+    <div class="reality-check-card trackwalk-card fade-up" id="trackwalk">
       <div class="trackwalk-body">
         <div class="reality-check-label">LIVE PRODUCT · AGENT TEAM</div>
         <h3 class="reality-check-title"><img class="trackwalk-icon" src="trackwalk-icon.png" alt="" width="28" height="28">Trackwalk: a live site an agent team builds and runs</h3>
@@ -1664,7 +1585,7 @@ footer a { color: var(--brown-light); text-decoration: none; }
       </figure>
     </div>
 
-    <div class="reality-check-card">
+    <div class="reality-check-card" id="scout">
       <div class="reality-check-card-body">
         <div class="reality-check-label">DEMO · TRY IT</div>
         <h3 class="reality-check-title">Scout: a sales agent built on a firm's own judgment</h3>
@@ -1696,6 +1617,80 @@ footer a { color: var(--brown-light); text-decoration: none; }
   </div>
 </section>
 
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label fade-up">Experience</div>
+  <h2 class="section-title fade-up">From recruiting manager to director of growth</h2>
+
+  <div class="xp-chapter fade-up">
+    <div class="xp-head">
+      <h3 class="xp-org">Enterprise tech</h3>
+      <div class="xp-span">2018 to present</div>
+      <div class="xp-span">Kalles Group · Seattle</div>
+      <p class="xp-note">Three roles at one firm, each building on the last.</p>
+    </div>
+    <ol class="xp-roles">
+      <li class="xp-role" id="role-kalles-growth">
+        <div class="xp-when">May 2022 – Present</div>
+        <div class="xp-body">
+          <h4 class="xp-title">Director of Growth & GTM Strategy</h4>
+          <p class="xp-desc">Grew one account from zero to $5M across six buying centers over three years. What I learned: enterprise buyers don't want a vendor, they want someone they can trust, who they like, and who will be honest with them when it matters. I also helped launch Smart Cookies, our executive panel series, and moderate every panel.</p>
+        </div>
+      </li>
+      <li class="xp-role">
+        <div class="xp-when">Aug 2019 – May 2022</div>
+        <div class="xp-body">
+          <h4 class="xp-title">Head of Recruiting & Marketing</h4>
+          <p class="xp-desc">Hired Principal Engineers for AI-powered security products before AI was the thing everyone was hiring for. Spent a lot of time in rooms with technical leaders, helping them craft a narrative that would actually resonate with the people they wanted to hire.</p>
+        </div>
+      </li>
+      <li class="xp-role">
+        <div class="xp-when">Oct 2018 – Aug 2019</div>
+        <div class="xp-body">
+          <h4 class="xp-title">Recruiting Manager</h4>
+          <p class="xp-desc">Led recruiting for engineering, cybersecurity, and TPM roles at Fortune 500 clients. Managed 5 direct reports, conducted 400+ interviews, and closed 30+ hires.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+
+  <div class="xp-chapter fade-up">
+    <div class="xp-head">
+      <h3 class="xp-org">Nonprofit leadership</h3>
+      <div class="xp-span">2005 to 2017</div>
+      <div class="xp-span">Venezuela · Seattle · India</div>
+      <p class="xp-note">More than a decade of nonprofit work, where I learned to build trust with people very different from me.</p>
+    </div>
+    <ol class="xp-roles">
+      <li class="xp-role">
+        <div class="xp-when">Dec 2013 – Jun 2017</div>
+        <div class="xp-body">
+          <h4 class="xp-title">Director, India Partnership</h4>
+          <div class="xp-co">CRU & Global Leadership Forum · Karnataka, India</div>
+          <p class="xp-desc">Led a core team of 7 and directed visiting teams of 20+. Partnered with Manipal University on a flagship leadership program, with a $500K program budget. Three and a half years of learning how to build trust across language, religion, class, and generation. The skill I still use the most.</p>
+        </div>
+      </li>
+      <li class="xp-role">
+        <div class="xp-when">Dec 2007 – Dec 2013</div>
+        <div class="xp-body">
+          <h4 class="xp-title">Senior Staff</h4>
+          <div class="xp-co">CRU · Seattle, WA</div>
+          <p class="xp-desc">Led fund development as a missionary. Spent years initiating conversations about faith and meaning with strangers, which taught me how to talk to people about things that matter without making it weird. By the end I could tell within the first five minutes whether a conversation was going somewhere real. Most of my instincts about enterprise relationship-building were shaped here, long before I ever sat in a B2B sales meeting.</p>
+        </div>
+      </li>
+      <li class="xp-role">
+        <div class="xp-when">2005 – 2007</div>
+        <div class="xp-body">
+          <h4 class="xp-title">Team Leader / Outreach Coordinator</h4>
+          <div class="xp-co">Vida Estudiantil · Mérida, Venezuela</div>
+          <p class="xp-desc">First leadership role, first real job, done in a second language in a country I'd never been to. Co-led a multinational, bilingual team of 15. Built a local volunteer base of 25+ Venezuelans, many of whom are still leading the engagement today.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+
 <!-- STORY -->
 <section id="story">
   <div class="section-label fade-up">The whole story</div>
@@ -1725,7 +1720,7 @@ footer a { color: var(--brown-light); text-decoration: none; }
         <p class="ch-text">Most people see one company from the inside. I've spent years advising security, risk, and technology leaders across banks, fintechs, Fortune 50 tech companies, and growth-stage startups simultaneously. You start to see the patterns: what moves initiatives forward, what kills them quietly, what leaders say versus what's really happening. When AI started becoming a real enterprise conversation, I was already in those rooms.</p>
       </div>
       <aside class="story-note">
-          <div class="story-fact"><span class="fact-n">150%</span><span class="fact-l">Year-over-year growth on the account I grew from $0 to $5M</span></div>
+          <div class="story-fact"><span class="fact-n">150%</span><span class="fact-l">Growth in a single year on the account I grew from $0 to $5M over three years</span></div>
           <div class="story-fact"><span class="fact-n">4</span><span class="fact-l">Executive panels designed and moderated for Smart Cookies</span></div>
       </aside>
     </div>
@@ -1808,9 +1803,6 @@ footer a { color: var(--brown-light); text-decoration: none; }
         <h3 class="ch-title">Things I'm still learning</h3>
         <p class="ch-text">This summer I played Bill Sikes in Oliver! at Kitsap Forest Theater, on an outdoor stage, alongside my kids. It was my first time doing anything like it, and now we're debating which show to do next year. Guitar has been an on-and-off hobby for years. I also love to cook, as long as I start with a clean kitchen.</p>
       </div>
-      <aside class="story-note">
-          <div class="story-fact"><span class="fact-n">Bill Sikes</span><span class="fact-l">in <em>Oliver!</em> at Kitsap Forest Theater, my first time on stage</span></div>
-      </aside>
     </div>
   </div>
 </section>
