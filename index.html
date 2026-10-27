@@ -318,6 +318,41 @@ section { padding: 6rem 4rem; }
 .do-proof:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 .do-proof:hover span, .do-proof:focus-visible span { margin-left: 0.25rem; }
 .do-proof span { transition: margin 0.15s; }
+
+/* ─── CASE NOTES ─── */
+.case-notes { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; max-width: 1160px; margin-top: 3.5rem; }
+.case-note { border-top: 2px solid var(--accent); padding-top: 1.5rem; }
+.case-label {
+  font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--brown); margin-bottom: 0.6rem;
+}
+.case-title {
+  font-family: var(--serif); font-size: 1.45rem; font-weight: 500;
+  color: var(--ink); line-height: 1.3; margin-bottom: 0.8rem;
+}
+.case-lead { font-size: 0.95rem; color: var(--brown-dark); line-height: 1.8; margin-bottom: 1.25rem; }
+.case-facts { border-top: 1px solid var(--tan); margin-bottom: 1rem; }
+.case-facts > div {
+  display: grid; grid-template-columns: 7.5rem 1fr; gap: 1rem;
+  padding: 0.65rem 0; border-bottom: 1px solid var(--tan);
+}
+.case-facts dt { font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--brown); padding-top: 0.15rem; }
+.case-facts dd { margin: 0; font-size: 0.88rem; color: var(--ink); line-height: 1.55; }
+.case-more summary {
+  cursor: pointer; display: inline-block; padding: 0.6rem 0; min-height: 44px;
+  font-size: 0.88rem; font-weight: 500; color: var(--accent);
+  text-decoration: underline; text-decoration-color: var(--sand); text-underline-offset: 4px;
+  list-style: none;
+}
+.case-more summary::-webkit-details-marker { display: none; }
+.case-more summary::after { content: " +"; }
+.case-more[open] summary::after { content: " \2212"; }
+.case-more summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.case-more h4 {
+  font-family: var(--serif); font-size: 1.02rem; font-weight: 500; color: var(--ink);
+  margin: 1.1rem 0 0.35rem;
+}
+.case-more p { font-size: 0.9rem; color: var(--brown-dark); line-height: 1.8; }
 @media (max-width: 1240px) and (min-width: 901px) {
   .do-row { grid-template-columns: 3rem 1fr 15rem; row-gap: 0.6rem; }
   .do-title, .do-text { grid-column: 2; }
@@ -595,6 +630,8 @@ footer a { color: var(--brown-light); text-decoration: none; }
   .do-row { grid-template-columns: 2rem minmax(0, 1fr); gap: 0.75rem 1rem; padding: 1.5rem 0; }
   .do-row > .do-text, .do-row > .do-proof { grid-column: 1 / -1; }
   .do-proof { margin-top: 0.25rem; }
+  .case-notes { grid-template-columns: 1fr; gap: 2.5rem; margin-top: 2.5rem; }
+  .case-facts > div { grid-template-columns: 1fr; gap: 0.2rem; }
   section { padding: 4rem 1.5rem; }
   .story-grid { grid-template-columns: 1fr; gap: 3rem; }
   .story-aside { position: static; }
@@ -727,6 +764,30 @@ footer a { color: var(--brown-light); text-decoration: none; }
 
 .agentos-card {
   margin-bottom: 2.5rem;
+}
+/* The diagram sits on a light panel, like a page pulled from the working files. */
+.agentos-figure {
+  margin: 0 0 24px; padding: 24px 28px 18px;
+  background: var(--cream); border-radius: 3px;
+}
+.agentos-diagram { display: block; width: 100%; height: auto; }
+.agentos-diagram-tall { display: none; width: 100%; max-width: 400px; height: auto; margin: 0 auto; }
+/* Text version of the diagram, for screen readers only. */
+.agentos-steps {
+  position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
+}
+.agentos-figure figcaption {
+  margin-top: 12px; font-family: "DM Sans", system-ui, sans-serif;
+  font-size: 13px; color: var(--brown);
+}
+/* Below laptop width the wide drawing gets too small to read, so a vertical one takes over. */
+@media (max-width: 1099px) {
+  .agentos-diagram { display: none; }
+  .agentos-diagram-tall { display: block; }
+  .agentos-figure figcaption { text-align: center; }
+}
+@media (max-width: 600px) {
+  .agentos-figure { padding: 16px 12px 12px; margin-left: -16px; margin-right: -16px; }
 }
 .agentos-outcomes {
   display: grid;
@@ -1129,15 +1190,66 @@ footer a { color: var(--brown-light); text-decoration: none; }
       <span class="do-num">02</span>
       <h3 class="do-title">AI Strategy & Enablement</h3>
       <p class="do-text">Helping organizations figure out which AI bets are actually worth making. I've run enterprise AI engagements across workflow redesign, human-in-the-loop operating models, and automation proofs of concept.</p>
-      <a class="do-proof" href="#tools"><strong>Three builds</strong> <em>What I've built with AI</em> <span aria-hidden="true">→</span></a>
+      <a class="do-proof" href="#case-ai-workflows"><strong>$300K</strong> <em>Case note: an AI engagement grown from a proof of concept</em> <span aria-hidden="true">→</span></a>
     </li>
     <li class="do-row fade-up">
       <span class="do-num">03</span>
       <h3 class="do-title">Executive Alignment</h3>
       <p class="do-text">Getting leadership teams aligned on complex initiatives before they stall. I've facilitated enough of these conversations across security, AI, and organizational change to know what gets stuck and how to move it.</p>
-      <a class="do-proof" href="#smartcookies"><strong>Since 2024</strong> <em>Every Smart Cookies panel, designed and moderated</em> <span aria-hidden="true">→</span></a>
+      <a class="do-proof" href="#case-ai-launch"><strong>One session</strong> <em>Case note: pressure-testing an AI launch before it scaled</em> <span aria-hidden="true">→</span></a>
     </li>
   </ol>
+  <div class="case-notes">
+    <article class="case-note fade-up" id="case-ai-workflows">
+      <div class="case-label">Case note · A global technology company</div>
+      <h3 class="case-title">Freeing a team to focus on its partners</h3>
+      <p class="case-lead">An AI automation system took manual processing off a partner-facing team's plate, so they could put their time into the partners they serve. It began as an advisory proof of concept and grew into a $300K engagement.</p>
+      <dl class="case-facts">
+        <div><dt>My role</dt><dd>Account lead. I scoped the work, assembled the team, and oversaw delivery. The engineers built the system.</dd></div>
+        <div><dt>Engagement</dt><dd>$300K, grown from an advisory proof of concept</dd></div>
+        <div><dt>First result</dt><dd>Human-in-the-loop model validated on one workflow in 30 days</dd></div>
+      </dl>
+      <details class="case-more">
+        <summary>Read the full note</summary>
+        <h4>The problem</h4>
+        <p>The client's operations team handled a high volume of partner submissions by hand. The work was slow and inconsistent, and it carried risk that was hard to see. Every hour spent moving submissions through by hand was an hour not spent helping partners succeed. The question wasn't only whether AI could do the work. It was whether AI could give the team that time back.</p>
+        <h4>What I did</h4>
+        <p>I'd built the relationship over time. I shaped a focused pilot on one workflow category instead of a broad program, and brought in an AI specialist and a nearshore operations partner. I kept the client's stakeholders and our delivery team working from the same picture of success, and stayed the executive point of contact from pilot through production.</p>
+        <h4>How we approached it</h4>
+        <p>We proved it small, with one workflow and a human-in-the-loop design, so people stayed in control of decisions while the system did the repetitive work. We built on the client's own platform tools, so the system fit their security expectations from day one. Once the first workflow held up, we expanded category by category rather than all at once.</p>
+        <h4>What we haven't measured yet</h4>
+        <p>Accuracy, time saved, and operating cost are the next phase. The more telling measure is what the team does with the time it gets back. That's the outcome customers actually want from AI, and it's the one I care most about proving.</p>
+        <h4>What I took from it</h4>
+        <p>Efficiency is where AI outcomes start, not where they end. The real return is what a team can do once it isn't buried in the work.</p>
+      </details>
+    </article>
+
+    <article class="case-note fade-up" id="case-ai-launch">
+      <div class="case-label">Case note · A financial services client</div>
+      <h3 class="case-title">Pressure-testing an AI launch before it scaled</h3>
+      <p class="case-lead">In one working session, an independent review surfaced a significant security weakness in a client's AI architecture before it scaled.</p>
+      <dl class="case-facts">
+        <div><dt>My role</dt><dd>Shaped the engagement, assembled the specialists, and facilitated the session</dd></div>
+        <div><dt>Format</dt><dd>Architecture and security discovery session</dd></div>
+        <div><dt>Specialists</dt><dd>Two principal-level experts, one in AI architecture and one in offensive security</dd></div>
+      </dl>
+      <details class="case-more">
+        <summary>Read the full note</summary>
+        <h4>The problem</h4>
+        <p>The client was building an AI agent to handle routine contact center calls. Leadership saw real efficiency in it, but they were uneasy about security, customer data, and how the system connected to backend systems. A third-party vendor controlled much of the platform, and no one internally had the AI security expertise to check the vendor's work.</p>
+        <h4>What I did</h4>
+        <p>I worked with the client's technology leadership to turn a general unease into a focused question: is this architecture safe to scale? They didn't need more developers or a penetration test. They needed an independent architectural review. I brought in the two specialists, set the session objectives with both sides, and moderated the working session with the client's technology, infrastructure, and project teams.</p>
+        <h4>How we approached it</h4>
+        <p>We asked architecture questions, not capability questions. We put two disciplines in the room: an AI architect could see how the system was designed, and an offensive security expert could see how it might be attacked. And we let the client's team test their own assumptions. The goal was shared understanding, not a lecture from outside experts.</p>
+        <h4>What changed</h4>
+        <p>The session surfaced a weakness in how the AI agent was authorized to reach customer systems. The technical stakeholders agreed the architecture needed further investigation before the platform expanded, and the client left with architecture recommendations and security testing priorities. Executive leadership said the session exceeded their expectations.</p>
+        <h4>What this was, and wasn't</h4>
+        <p>This was a discovery and advisory session, not a remediation project. Whether the fixes were made, and how much risk they removed, sits outside what I can claim here.</p>
+        <h4>What I took from it</h4>
+        <p>Traditional application security doesn't fully cover what autonomous AI agents can do. Sometimes the most useful thing an advisor can do is slow a good idea down long enough to make it safe.</p>
+      </details>
+    </article>
+  </div>
 </section>
 
 <!-- SMART COOKIES -->
@@ -1265,6 +1377,175 @@ footer a { color: var(--brown-light); text-decoration: none; }
       <div class="reality-check-label">FOUNDATION · KALLES GROUP</div>
       <h3 class="reality-check-title">KG AgentOS: one source of truth for a firm's AI agents</h3>
       <p class="reality-check-desc">Our AI agents were working from scattered, outdated copies of who we are and what we sell. I designed and built a single library of owned files that every agent reads from, so when the firm decides something, the agents reflect it.</p>
+      <figure class="agentos-figure">
+        <svg class="agentos-diagram" viewBox="0 0 1020 530" xmlns="http://www.w3.org/2000/svg" font-family="DM Sans, system-ui, sans-serif" aria-hidden="true" focusable="false">
+          <defs>
+            <marker id="agentos-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="#526e4e"/>
+            </marker>
+          </defs>
+        
+          <!-- Column labels -->
+          <text x="20" y="24" font-size="12" letter-spacing="1.5" fill="#526e4e">1 · THE FIRM DECIDES</text>
+          <text x="300" y="24" font-size="12" letter-spacing="1.5" fill="#526e4e">2 · ONE OWNED LIBRARY</text>
+          <text x="760" y="24" font-size="12" letter-spacing="1.5" fill="#526e4e">3 · AGENTS READ</text>
+        
+          <!-- Decisions -->
+          <rect x="20" y="44" width="220" height="110" rx="4" fill="#ffffff" stroke="#d4ddd1"/>
+          <text x="38" y="78" font-family="Lora, Georgia, serif" font-size="18" fill="#141f13">A decision is made</text>
+          <text x="38" y="104" font-size="13" fill="#2e4a2b">New offering, new message,</text>
+          <text x="38" y="122" font-size="13" fill="#2e4a2b">a change in how we sell</text>
+          <path d="M240,99 L292,99" stroke="#526e4e" stroke-width="1.5" marker-end="url(#agentos-arr)"/>
+          <text x="246" y="90" font-size="12" fill="#526e4e">owner</text>
+          <text x="246" y="118" font-size="12" fill="#526e4e">updates</text>
+        
+          <!-- Library -->
+          <rect x="300" y="44" width="400" height="330" rx="4" fill="#e8ede6" stroke="#a8baa4"/>
+          <text x="320" y="74" font-family="Lora, Georgia, serif" font-size="18" fill="#141f13">Context library</text>
+          <text x="320" y="94" font-size="12.5" fill="#2e4a2b">Plain-language files in tiers, each with its own access set.</text>
+        
+          <g font-size="13">
+            <text x="320" y="122" font-size="12" letter-spacing="1.2" fill="#526e4e">FOUNDATION TIER · OPEN TO EVERY AGENT</text>
+            <rect x="320" y="132" width="360" height="44" rx="3" fill="#fff" stroke="#d4ddd1"/>
+            <text x="336" y="159" fill="#141f13">Who we are · voice</text>
+            <text x="664" y="159" text-anchor="end" font-size="12" fill="#3d5c3a">Named owner</text>
+            <rect x="320" y="182" width="360" height="44" rx="3" fill="#fff" stroke="#d4ddd1"/>
+            <text x="336" y="209" fill="#141f13">How we work · standards</text>
+            <text x="664" y="209" text-anchor="end" font-size="12" fill="#3d5c3a">Named owner</text>
+        
+            <text x="320" y="252" font-size="12" letter-spacing="1.2" fill="#526e4e">SPECIALIST TIERS · ONLY THE AGENTS GIVEN ACCESS</text>
+            <rect x="320" y="262" width="360" height="44" rx="3" fill="#fff" stroke="#d4ddd1"/>
+            <g fill="none" stroke="#3d5c3a" stroke-width="1.3"><rect x="336" y="281" width="10" height="8" rx="1.5"/><path d="M338,281 v-3 a3,3 0 0 1 6,0 v3"/></g><text x="354" y="289" fill="#141f13">What we sell · how we sell</text>
+            <text x="664" y="289" text-anchor="end" font-size="12" fill="#3d5c3a">Named owner</text>
+            <rect x="320" y="312" width="360" height="44" rx="3" fill="#fff" stroke="#d4ddd1"/>
+            <g fill="none" stroke="#3d5c3a" stroke-width="1.3"><rect x="336" y="331" width="10" height="8" rx="1.5"/><path d="M338,331 v-3 a3,3 0 0 1 6,0 v3"/></g><text x="354" y="339" fill="#141f13">Content · thought leadership</text>
+            <text x="664" y="339" text-anchor="end" font-size="12" fill="#3d5c3a">Named owner</text>
+          </g>
+        
+          <!-- Agents -->
+          <g>
+            <rect x="760" y="60" width="240" height="66" rx="4" fill="#fff" stroke="#d4ddd1"/>
+            <text x="778" y="88" font-family="Lora, Georgia, serif" font-size="16" fill="#141f13">Sales agent</text>
+            <text x="778" y="108" font-size="12.5" fill="#2e4a2b">Foundation + sales file</text>
+            <rect x="760" y="150" width="240" height="66" rx="4" fill="#fff" stroke="#d4ddd1"/>
+            <text x="778" y="178" font-family="Lora, Georgia, serif" font-size="16" fill="#141f13">Content agent</text>
+            <text x="778" y="198" font-size="12.5" fill="#2e4a2b">Foundation + content file</text>
+            <rect x="760" y="240" width="240" height="66" rx="4" fill="#fff" stroke="#d4ddd1" stroke-dasharray="4 3"/>
+            <text x="778" y="268" font-family="Lora, Georgia, serif" font-size="16" fill="#141f13">Next agent</text>
+            <text x="778" y="288" font-size="12.5" fill="#2e4a2b">Any AI tool, same files</text>
+          </g>
+          <g stroke="#526e4e" stroke-width="1.5" fill="none">
+            <path d="M700,154 C730,154 730,93 756,93" marker-end="url(#agentos-arr)"/>
+            <path d="M700,200 C730,200 730,183 756,183" marker-end="url(#agentos-arr)"/>
+            <path d="M700,284 C730,284 730,273 756,273" marker-end="url(#agentos-arr)"/>
+          </g>
+          <text x="706" y="236" font-size="12" fill="#526e4e">read</text>
+          <text x="706" y="250" font-size="12" fill="#526e4e">only</text>
+        
+          <!-- Write loop -->
+          <text x="20" y="420" font-size="12" letter-spacing="1.5" fill="#526e4e">4 · CHANGES GO THROUGH THE OWNER</text>
+          <g font-size="13">
+            <rect x="20" y="436" width="210" height="76" rx="4" fill="#fff" stroke="#d4ddd1"/>
+            <text x="36" y="464" fill="#141f13">Someone spots a gap</text>
+            <text x="36" y="484" font-size="12.5" fill="#2e4a2b">A person, or an agent's</text>
+            <text x="36" y="500" font-size="12.5" fill="#2e4a2b">answer that's out of date</text>
+        
+            <rect x="270" y="436" width="210" height="76" rx="4" fill="#fff" stroke="#d4ddd1"/>
+            <text x="286" y="464" fill="#141f13">Proposed change</text>
+            <text x="286" y="484" font-size="12.5" fill="#2e4a2b">Agents never write to</text>
+            <text x="286" y="500" font-size="12.5" fill="#2e4a2b">the library directly</text>
+        
+            <rect x="520" y="436" width="210" height="76" rx="4" fill="#fff" stroke="#3d5c3a" stroke-width="1.5"/>
+            <text x="536" y="464" fill="#141f13">Owner reviews</text>
+            <text x="536" y="484" font-size="12.5" fill="#2e4a2b">Approves, edits,</text>
+            <text x="536" y="500" font-size="12.5" fill="#2e4a2b">or says no</text>
+        
+            <rect x="770" y="436" width="230" height="76" rx="4" fill="#fff" stroke="#d4ddd1"/>
+            <text x="786" y="464" fill="#141f13">Published once</text>
+            <text x="786" y="484" font-size="12.5" fill="#2e4a2b">Every agent picks up the</text>
+            <text x="786" y="500" font-size="12.5" fill="#2e4a2b">same version on next sync</text>
+          </g>
+          <g stroke="#526e4e" stroke-width="1.5" fill="none">
+            <path d="M230,474 L266,474" marker-end="url(#agentos-arr)"/>
+            <path d="M480,474 L516,474" marker-end="url(#agentos-arr)"/>
+            <path d="M730,474 L766,474" marker-end="url(#agentos-arr)"/>
+            <path d="M885,436 L885,390 L520,390 L520,378" marker-end="url(#agentos-arr)"/>
+          </g>
+          <text x="530" y="404" font-size="12" fill="#526e4e">write</text>
+        </svg>
+        <svg class="agentos-diagram-tall" viewBox="0 0 326 912" xmlns="http://www.w3.org/2000/svg" font-family="DM Sans, system-ui, sans-serif" aria-hidden="true" focusable="false">
+          <defs>
+            <marker id="agentos-arr-tall" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="#526e4e"/>
+            </marker>
+          </defs>
+
+          <text x="4" y="16" font-size="11" letter-spacing="1.2" fill="#526e4e">1 · THE FIRM DECIDES</text>
+          <rect x="4" y="26" width="288" height="62" rx="4" fill="#fff" stroke="#d4ddd1"/>
+          <text x="18" y="51" font-family="Lora, Georgia, serif" font-size="15" fill="#141f13">A decision is made</text>
+          <text x="18" y="73" font-size="12.5" fill="#2e4a2b">New offering, message, or way we sell</text>
+          <path d="M148,88 L148,116" stroke="#526e4e" stroke-width="1.5" marker-end="url(#agentos-arr-tall)"/>
+          <text x="158" y="107" font-size="11" fill="#526e4e">owner updates</text>
+
+          <text x="4" y="140" font-size="11" letter-spacing="1.2" fill="#526e4e">2 · ONE OWNED LIBRARY</text>
+          <rect x="4" y="150" width="288" height="282" rx="4" fill="#e8ede6" stroke="#a8baa4"/>
+          <text x="16" y="176" font-family="Lora, Georgia, serif" font-size="16" fill="#141f13">Context library</text>
+          <text x="16" y="196" font-size="12" fill="#2e4a2b">Plain-language files in tiers, each with</text>
+          <text x="16" y="212" font-size="12" fill="#2e4a2b">its own access set and a named owner.</text>
+          <text x="16" y="236" font-size="10.5" letter-spacing="1.1" fill="#526e4e">FOUNDATION · EVERY AGENT</text>
+          <rect x="16" y="244" width="264" height="34" rx="3" fill="#fff" stroke="#d4ddd1"/>
+          <text x="28" y="265" font-size="12.5" fill="#141f13">Who we are · voice</text>
+          <rect x="16" y="284" width="264" height="34" rx="3" fill="#fff" stroke="#d4ddd1"/>
+          <text x="28" y="305" font-size="12.5" fill="#141f13">How we work · standards</text>
+          <text x="16" y="342" font-size="10.5" letter-spacing="1.1" fill="#526e4e">SPECIALIST · ONLY AGENTS GIVEN ACCESS</text>
+          <rect x="16" y="350" width="264" height="34" rx="3" fill="#fff" stroke="#d4ddd1"/>
+          <g fill="none" stroke="#3d5c3a" stroke-width="1.3"><rect x="28" y="363" width="10" height="8" rx="1.5"/><path d="M30,363 v-3 a3,3 0 0 1 6,0 v3"/></g>
+          <text x="46" y="371" font-size="12.5" fill="#141f13">What we sell · how we sell</text>
+          <rect x="16" y="390" width="264" height="34" rx="3" fill="#fff" stroke="#d4ddd1"/>
+          <g fill="none" stroke="#3d5c3a" stroke-width="1.3"><rect x="28" y="403" width="10" height="8" rx="1.5"/><path d="M30,403 v-3 a3,3 0 0 1 6,0 v3"/></g>
+          <text x="46" y="411" font-size="12.5" fill="#141f13">Content · thought leadership</text>
+          <path d="M148,432 L148,460" stroke="#526e4e" stroke-width="1.5" marker-end="url(#agentos-arr-tall)"/>
+          <text x="158" y="451" font-size="11" fill="#526e4e">read only</text>
+
+          <text x="4" y="484" font-size="11" letter-spacing="1.2" fill="#526e4e">3 · AGENTS READ</text>
+          <rect x="4" y="494" width="288" height="38" rx="4" fill="#fff" stroke="#d4ddd1"/>
+          <text x="16" y="518" font-family="Lora, Georgia, serif" font-size="14" fill="#141f13">Sales agent</text>
+          <text x="280" y="518" text-anchor="end" font-size="11.5" fill="#2e4a2b">Foundation + sales</text>
+          <rect x="4" y="540" width="288" height="38" rx="4" fill="#fff" stroke="#d4ddd1"/>
+          <text x="16" y="564" font-family="Lora, Georgia, serif" font-size="14" fill="#141f13">Content agent</text>
+          <text x="280" y="564" text-anchor="end" font-size="11.5" fill="#2e4a2b">Foundation + content</text>
+          <rect x="4" y="586" width="288" height="38" rx="4" fill="#fff" stroke="#d4ddd1" stroke-dasharray="4 3"/>
+          <text x="16" y="610" font-family="Lora, Georgia, serif" font-size="14" fill="#141f13">Next agent</text>
+          <text x="280" y="610" text-anchor="end" font-size="11.5" fill="#2e4a2b">Any AI tool, same files</text>
+
+          <text x="4" y="656" font-size="11" letter-spacing="1.2" fill="#526e4e">4 · CHANGES GO THROUGH THE OWNER</text>
+          <rect x="4" y="666" width="288" height="46" rx="4" fill="#fff" stroke="#d4ddd1"/>
+          <text x="16" y="686" font-size="13" fill="#141f13">Someone spots a gap</text>
+          <text x="16" y="703" font-size="11.5" fill="#2e4a2b">A person, or an agent's out-of-date answer</text>
+          <path d="M148,712 L148,726" stroke="#526e4e" stroke-width="1.5" marker-end="url(#agentos-arr-tall)"/>
+          <rect x="4" y="728" width="288" height="46" rx="4" fill="#fff" stroke="#d4ddd1"/>
+          <text x="16" y="748" font-size="13" fill="#141f13">Proposed change</text>
+          <text x="16" y="765" font-size="11.5" fill="#2e4a2b">Agents never write to the library directly</text>
+          <path d="M148,774 L148,788" stroke="#526e4e" stroke-width="1.5" marker-end="url(#agentos-arr-tall)"/>
+          <rect x="4" y="790" width="288" height="46" rx="4" fill="#fff" stroke="#3d5c3a" stroke-width="1.5"/>
+          <text x="16" y="810" font-size="13" fill="#141f13">Owner reviews</text>
+          <text x="16" y="827" font-size="11.5" fill="#2e4a2b">Approves, edits, or says no</text>
+          <path d="M148,836 L148,850" stroke="#526e4e" stroke-width="1.5" marker-end="url(#agentos-arr-tall)"/>
+          <rect x="4" y="852" width="288" height="46" rx="4" fill="#fff" stroke="#d4ddd1"/>
+          <text x="16" y="872" font-size="13" fill="#141f13">Published once</text>
+          <text x="16" y="889" font-size="11.5" fill="#2e4a2b">Every agent picks up the same version</text>
+
+          <path d="M292,875 L308,875 L308,300 L296,300" stroke="#526e4e" stroke-width="1.5" fill="none" marker-end="url(#agentos-arr-tall)"/>
+          <text transform="translate(323,600) rotate(-90)" text-anchor="middle" font-size="11" fill="#526e4e">write</text>
+        </svg>
+        <ol class="agentos-steps">
+          <li><strong>The firm decides.</strong> A new offering, a new message, or a change in how we sell. The file's owner updates the library.</li>
+          <li><strong>One owned library.</strong> Plain-language files in tiers, each with its own access set. Every agent reads the foundation tier. Specialist tiers open only to the agents given access. Every file has a named owner.</li>
+          <li><strong>Agents read.</strong> Each agent reads the foundation plus the files it has access to. Any AI tool can work from the same files. Agents only read.</li>
+          <li><strong>Changes go through the owner.</strong> A person, or an agent's out-of-date answer, shows a gap. A change is proposed, the owner reviews it, and it's published once, so every agent picks up the same version.</li>
+        </ol>
+        <figcaption>How the library works, simplified. An illustration, not the actual system.</figcaption>
+      </figure>
       <div class="agentos-outcomes">
         <div><div class="agentos-outcome-label">What changed</div><p>Every file has a named owner, and changes go through that owner. The firm's sales agent runs on it.</p></div>
         <div><div class="agentos-outcome-label">Why it matters</div><p>Any agent, whatever AI tool it runs on, describes the firm the same way and works from what leadership has actually decided. The model moves with the firm when its tools change.</p></div>
