@@ -646,7 +646,6 @@ footer a { color: var(--brown-light); text-decoration: none; }
   .thinking-grid { grid-template-columns: 1fr; gap: 2.5rem; }
   .topic-item { gap: 1rem; }
   .topic-tag { flex-shrink: 0; }
-  .helltrack-card { grid-template-columns: 1fr !important; }
   .agentos-outcomes { grid-template-columns: 1fr !important; }
   .tools-intro-grid { grid-template-columns: 1fr; }
   .sc-media-grid { grid-template-columns: 1fr !important; }
@@ -760,6 +759,46 @@ footer a { color: var(--brown-light); text-decoration: none; }
 .tools-footnote a:hover {
   color: #F6F8F5;
   text-decoration-color: #F6F8F5;
+}
+
+/* ─── TRACKWALK ─── */
+.trackwalk-card {
+  display: grid; grid-template-columns: minmax(0, 1fr) 240px; gap: 48px; align-items: start;
+  margin-bottom: 2.5rem;
+}
+.trackwalk-icon {
+  width: 28px; height: 28px; border-radius: 6px;
+  vertical-align: -4px; margin-right: 12px;
+}
+.trackwalk-tags {
+  list-style: none; margin: 0 0 28px; padding: 0;
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
+.trackwalk-tags li {
+  font-family: "DM Sans", system-ui, sans-serif; font-size: 13px; color: #A8BAA4;
+  padding: 5px 12px; border: 1px solid rgba(246, 248, 245, 0.12); border-radius: 3px;
+}
+.tools-links { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; }
+.reality-check-launch { text-decoration: none; }
+.tools-link {
+  font-family: "DM Sans", system-ui, sans-serif; font-size: 14px; color: #A8BAA4;
+  text-decoration: underline; text-decoration-color: rgba(168, 186, 164, 0.4); text-underline-offset: 3px;
+}
+.tools-link:hover { color: #F6F8F5; text-decoration-color: #F6F8F5; }
+/* The product's own neon look stays inside its screenshot. */
+.trackwalk-shot { margin: 0; }
+.trackwalk-shot img {
+  display: block; width: 100%; height: auto;
+  border-radius: 22px; border: 6px solid #2a2f2a;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+}
+.trackwalk-shot figcaption {
+  margin-top: 12px; text-align: center;
+  font-family: "DM Sans", system-ui, sans-serif; font-size: 13px; color: #A8BAA4;
+}
+@media (max-width: 900px) {
+  .trackwalk-card { grid-template-columns: 1fr; gap: 32px; }
+  .trackwalk-shot { max-width: 240px; margin: 0 auto; }
 }
 
 .agentos-card {
@@ -1366,8 +1405,8 @@ footer a { color: var(--brown-light); text-decoration: none; }
 <!-- AI TOOLS -->
 <section id="tools" class="section">
   <div class="container">
-    <div class="section-eyebrow">BUILDING WITH AI</div>
-    <h2 class="section-heading">What I've built with AI</h2>
+    <div class="section-label fade-up">Building with AI</div>
+    <h2 class="section-title fade-up">What I've built with AI</h2>
  
     <div class="tools-intro">
       <p>Three layers of the same work, from the foundation up. KG AgentOS is the context layer my firm's AI agents work from, Trackwalk is a live product an agent team builds and keeps running, and Scout is a demo agent you can try.</p>
@@ -1552,28 +1591,28 @@ footer a { color: var(--brown-light); text-decoration: none; }
       </div>
     </div>
 
-    <div style="max-width: 1100px; margin: 0 auto 2.5rem;" class="fade-up">
-      <div style="background: #0d0d0d; border-radius: 6px; padding: 1.75rem 2rem; display: grid; grid-template-columns: auto 1fr; gap: 1.5rem; align-items: start;" class="helltrack-card">
-        <img src="trackwalk-icon.png" alt="Trackwalk logo" width="44" height="44" style="display: block; width: 44px; height: 44px; border-radius: 6px; flex-shrink: 0; margin-top: 2px;">
-        <div>
-          <div style="font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(200,200,200,0.3); margin-bottom: 0.3rem; font-weight: 500;">Live product · Agent team</div>
-          <div style="font-size: 1.25rem; font-weight: 700; color: #c8f000; letter-spacing: 0.04em; margin-bottom: 0.15rem; font-family: var(--sans);">TRACKWALK</div>
-          <div style="font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(200,200,200,0.35); margin-bottom: 0.9rem;">UCI Downhill</div>
-          <p style="font-size: 0.875rem; color: rgba(255,255,255,0.55); line-height: 1.75; margin-bottom: 1rem;">Trackwalk is a live site for downhill mountain bike racing fans, with fresh race video and World Cup results back to 2009. An AI coding agent writes the code, and five specialist agents scope ideas and review the work. I set the direction, and I decide what ships. Day to day it runs on its own: scheduled jobs pull in new race content, the calendar, and results as they're posted. Running agents takes the same skills as running a team, mainly clear scope and careful review.</p>
-          <div style="display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.1rem;">
-            <span style="font-size: 0.7rem; color: rgba(200,200,200,0.45); border: 1px solid rgba(255,255,255,0.1); padding: 0.2rem 0.6rem; border-radius: 2px; letter-spacing: 0.04em;">Multi-agent workflow</span>
-            <span style="font-size: 0.7rem; color: rgba(200,200,200,0.45); border: 1px solid rgba(255,255,255,0.1); padding: 0.2rem 0.6rem; border-radius: 2px; letter-spacing: 0.04em;">Five specialist agents</span>
-            <span style="font-size: 0.7rem; color: rgba(200,200,200,0.45); border: 1px solid rgba(255,255,255,0.1); padding: 0.2rem 0.6rem; border-radius: 2px; letter-spacing: 0.04em;">Results back to 2009</span>
-            <span style="font-size: 0.7rem; color: rgba(200,200,200,0.45); border: 1px solid rgba(255,255,255,0.1); padding: 0.2rem 0.6rem; border-radius: 2px; letter-spacing: 0.04em;">18 sources</span>
-            <span style="font-size: 0.7rem; color: rgba(200,200,200,0.45); border: 1px solid rgba(255,255,255,0.1); padding: 0.2rem 0.6rem; border-radius: 2px; letter-spacing: 0.04em;">Refreshes daily</span>
-            <span style="font-size: 0.7rem; color: rgba(200,200,200,0.45); border: 1px solid rgba(255,255,255,0.1); padding: 0.2rem 0.6rem; border-radius: 2px; letter-spacing: 0.04em;">Open source</span>
-          </div>
-          <div style="display: flex; gap: 0.65rem; flex-wrap: wrap;">
-            <a href="https://trackwalk.racing" target="_blank" style="background: #c8f000; color: #0d0d0d; font-size: 0.75rem; font-weight: 700; padding: 0.45rem 1rem; border-radius: 3px; text-decoration: none; letter-spacing: 0.04em; transition: opacity 0.15s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Visit trackwalk.racing ↗</a>
-            <a href="https://github.com/bscharenberg/trackwalk" target="_blank" style="background: transparent; color: rgba(255,255,255,0.4); font-size: 0.75rem; font-weight: 500; padding: 0.45rem 1rem; border-radius: 3px; text-decoration: none; border: 1px solid rgba(255,255,255,0.1); transition: border-color 0.15s;" onmouseover="this.style.borderColor='rgba(255,255,255,0.28)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.1)'">GitHub ↗</a>
-          </div>
+    <div class="reality-check-card trackwalk-card fade-up">
+      <div class="trackwalk-body">
+        <div class="reality-check-label">LIVE PRODUCT · AGENT TEAM</div>
+        <h3 class="reality-check-title"><img class="trackwalk-icon" src="trackwalk-icon.png" alt="" width="28" height="28">Trackwalk: a live site an agent team builds and runs</h3>
+        <p class="reality-check-desc">Trackwalk is a live site for downhill mountain bike racing fans, with fresh race video and World Cup results back to 2009. An AI coding agent writes the code, and five specialist agents scope ideas and review the work. I set the direction, and I decide what ships. Day to day it runs on its own: scheduled jobs pull in new race content, the calendar, and results as they're posted. Running agents takes the same skills as running a team, mainly clear scope and careful review.</p>
+        <ul class="trackwalk-tags">
+          <li>Multi-agent workflow</li>
+          <li>Five specialist agents</li>
+          <li>Results back to 2009</li>
+          <li>18 sources</li>
+          <li>Refreshes daily</li>
+          <li>Open source</li>
+        </ul>
+        <div class="tools-links">
+          <a class="reality-check-launch" href="https://trackwalk.racing" target="_blank" rel="noopener">Visit trackwalk.racing <span class="reality-check-arrow">↗</span></a>
+          <a class="tools-link" href="https://github.com/bscharenberg/trackwalk" target="_blank" rel="noopener">View on GitHub ↗</a>
         </div>
       </div>
+      <figure class="trackwalk-shot">
+        <img src="trackwalk-results.jpg" alt="Trackwalk on a phone, showing World Cup finals results for Lake Placid" width="750" height="1400" loading="lazy">
+        <figcaption>The Results view on a phone</figcaption>
+      </figure>
     </div>
 
     <div class="reality-check-card">
