@@ -255,29 +255,12 @@ section { padding: 6rem 4rem; }
   display: grid; grid-template-columns: minmax(0, 680px) 17rem; gap: 4rem; justify-content: start;
   padding: 2.25rem 0; border-bottom: 1px solid var(--tan);
 }
-#story .ch-title {
+.story-row .ch-title {
   font-family: var(--serif); font-size: 1.3rem; font-weight: 500;
   color: var(--ink); line-height: 1.3; margin-bottom: 0.7rem;
 }
-#story .ch-text { font-size: 0.95rem; color: var(--brown-dark); line-height: 1.85; }
+.story-row .ch-text { font-size: 0.95rem; color: var(--brown-dark); line-height: 1.85; }
 
-/* Chapter list, still used by the Life section. */
-.chapters { display: flex; flex-direction: column; gap: 0; }
-.chapter {
-  display: grid; grid-template-columns: 3rem 1fr;
-  gap: 1.5rem; padding: 2rem 0;
-  border-bottom: 1px solid var(--tan);
-}
-.chapter:first-child { padding-top: 0; }
-.ch-num {
-  font-family: var(--serif); font-size: 0.8rem; font-style: italic;
-  color: var(--accent); opacity: 0.65; padding-top: 0.2rem; text-align: right;
-}
-.ch-title {
-  font-family: var(--serif); font-size: 1.05rem; font-weight: 500;
-  color: var(--ink); margin-bottom: 0.5rem;
-}
-.ch-text { font-size: 0.92rem; color: var(--brown-dark); line-height: 1.85; }
 .story-note { padding-top: 0.35rem; }
 .story-fact {
   display: block; border-left: 2px solid var(--accent-light); padding-left: 1rem;
@@ -288,6 +271,12 @@ section { padding: 6rem 4rem; }
   color: var(--accent); line-height: 1.1; margin-bottom: 0.2rem;
 }
 .fact-l { display: block; font-size: 0.85rem; color: var(--brown-dark); line-height: 1.5; }
+.story-link { display: block; text-decoration: none; border-left: 2px solid var(--accent-light); padding-left: 1rem; }
+.story-link + .story-link { margin-top: 1.25rem; }
+.story-link-label { display: block; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--brown); margin-bottom: 0.2rem; }
+.story-link-name { display: block; font-family: var(--serif); font-size: 1.05rem; font-style: italic; color: var(--ink); margin-bottom: 0.15rem; }
+.story-link:hover .story-link-name, .story-link:focus-visible .story-link-name { text-decoration: underline; text-decoration-color: var(--sand); text-underline-offset: 3px; }
+.story-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 .pull-quote {
   margin: 0; font-family: var(--serif); font-size: 1.3rem; font-style: italic;
   color: var(--brown-dark); line-height: 1.5;
@@ -666,7 +655,6 @@ footer a { color: var(--brown-light); text-decoration: none; }
   .case-facts > div { grid-template-columns: 1fr; gap: 0.2rem; }
   section { padding: 4rem 1.5rem; }
   .story-row { grid-template-columns: 1fr; gap: 1.25rem; padding: 1.75rem 0; }
-  .life-grid { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
   .xp-chapter { grid-template-columns: 1fr; gap: 1.5rem; padding: 2rem 0; }
   .xp-head { position: static; }
   .xp-role { grid-template-columns: 1fr; gap: 0.3rem; }
@@ -1791,36 +1779,33 @@ footer a { color: var(--brown-light); text-decoration: none; }
 <section id="life" style="background: var(--parchment);">
   <div class="section-label fade-up">Outside of work</div>
   <h2 class="section-title fade-up">The rest of the story</h2>
-  <div class="life-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; max-width: 1100px; margin: 0 auto; align-items: start;">
-    <div>
-      <div class="chapters" style="margin-top:0;">
-        <div class="chapter fade-up" style="padding-top:0;">
-          <div class="ch-num">01</div>
-          <div>
-            <div class="ch-title">Outdoors, usually with my kids</div>
-            <div class="ch-text">Some of my favorite hours have been in the garage building bikes with my kids, and I've posted some of those projects on YouTube. These days we ride together, and in winter we're on the mountain snowboarding and skiing. I fish whenever I get the chance. I also follow UCI World Cup downhill closely enough to have opinions about line choice at Leogang and Mont-Sainte-Anne. It all started with RAD, the 80s BMX movie.</div>
-          </div>
-        </div>
-        <div class="chapter fade-up">
-          <div class="ch-num">02</div>
-          <div>
-            <div class="ch-title">Things I'm still learning</div>
-            <div class="ch-text">This summer I played Bill Sikes in Oliver! at Kitsap Forest Theater, on an outdoor stage, alongside my kids. It was my first time doing anything like it, and now we're debating which show to do next year. Guitar has been an on-and-off hobby for years. I also love to cook, as long as I start with a clean kitchen.</div>
-          </div>
-        </div>
+  <div class="story-rows">
+    <div class="story-row fade-up">
+      <div class="story-main">
+        <h3 class="ch-title">Outdoors, usually with my kids</h3>
+        <p class="ch-text">Some of my favorite hours have been in the garage building bikes with my kids, and I've posted some of those projects on YouTube. These days we ride together, and in winter we're on the mountain snowboarding and skiing. I fish whenever I get the chance. I also follow UCI World Cup downhill closely enough to have opinions about line choice at Leogang and Mont-Sainte-Anne. It all started with RAD, the 80s BMX movie.</p>
       </div>
+      <aside class="story-note">
+          <a class="story-link" href="https://www.youtube.com/@bscharenberg" target="_blank" rel="noopener">
+            <span class="story-link-label">On YouTube</span>
+            <span class="story-link-name">@bscharenberg (SeattleDad) ↗</span>
+            <span class="fact-l">MTB builds, POV rides, garage sessions</span>
+          </a>
+          <a class="story-link" href="https://www.instagram.com/scharenbergs/" target="_blank" rel="noopener">
+            <span class="story-link-label">On Instagram</span>
+            <span class="story-link-name">@scharenbergs ↗</span>
+            <span class="fact-l">Bikes, snow, family, gratitude, fish</span>
+          </a>
+      </aside>
     </div>
-    <div style="position: sticky; top: 7rem;">
-      <div style="background: var(--warm-white); border: 1px solid var(--tan); border-radius: 4px; padding: 1.5rem 1.75rem; margin-bottom: 1rem;" class="fade-up">
-        <div class="hero-card-label" style="margin-bottom: 0.75rem;">On YouTube</div>
-        <a href="https://www.youtube.com/@bscharenberg" target="_blank" style="font-family: var(--serif); font-size: 0.95rem; font-style: italic; color: var(--brown-dark); text-decoration: none; line-height: 1.6; display: block;">@bscharenberg (SeattleDad) ↗</a>
-        <div style="font-size: 0.8rem; color: var(--brown-light); margin-top: 0.4rem;">MTB builds, POV rides, garage sessions</div>
+    <div class="story-row fade-up">
+      <div class="story-main">
+        <h3 class="ch-title">Things I'm still learning</h3>
+        <p class="ch-text">This summer I played Bill Sikes in Oliver! at Kitsap Forest Theater, on an outdoor stage, alongside my kids. It was my first time doing anything like it, and now we're debating which show to do next year. Guitar has been an on-and-off hobby for years. I also love to cook, as long as I start with a clean kitchen.</p>
       </div>
-      <div style="background: var(--warm-white); border: 1px solid var(--tan); border-radius: 4px; padding: 1.5rem 1.75rem; margin-bottom: 1rem;" class="fade-up">
-        <div class="hero-card-label" style="margin-bottom: 0.75rem;">On Instagram</div>
-        <a href="https://www.instagram.com/scharenbergs/" target="_blank" style="font-family: var(--serif); font-size: 0.95rem; font-style: italic; color: var(--brown-dark); text-decoration: none; line-height: 1.6; display: block;">@scharenbergs ↗</a>
-        <div style="font-size: 0.8rem; color: var(--brown-light); margin-top: 0.4rem;">Bikes, snow, family, gratitude, fish</div>
-      </div>
+      <aside class="story-note">
+          <div class="story-fact"><span class="fact-n">Bill Sikes</span><span class="fact-l">in <em>Oliver!</em> at Kitsap Forest Theater, my first time on stage</span></div>
+      </aside>
     </div>
   </div>
 </section>
