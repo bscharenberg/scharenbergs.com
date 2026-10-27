@@ -249,10 +249,19 @@ section { padding: 6rem 4rem; }
 
 /* ─── STORY ─── */
 #story { background: var(--warm-white); }
-.story-grid {
-  display: grid; grid-template-columns: 1.2fr 1fr;
-  gap: 6rem; max-width: 1100px; margin: 0 auto; align-items: start;
+/* An essay with margin notes: each fact sits beside the paragraph it supports. */
+.story-rows { max-width: 1160px; margin-top: 1rem; border-top: 1px solid var(--tan); }
+.story-row {
+  display: grid; grid-template-columns: minmax(0, 680px) 17rem; gap: 4rem; justify-content: start;
+  padding: 2.25rem 0; border-bottom: 1px solid var(--tan);
 }
+#story .ch-title {
+  font-family: var(--serif); font-size: 1.3rem; font-weight: 500;
+  color: var(--ink); line-height: 1.3; margin-bottom: 0.7rem;
+}
+#story .ch-text { font-size: 0.95rem; color: var(--brown-dark); line-height: 1.85; }
+
+/* Chapter list, still used by the Life section. */
 .chapters { display: flex; flex-direction: column; gap: 0; }
 .chapter {
   display: grid; grid-template-columns: 3rem 1fr;
@@ -269,25 +278,21 @@ section { padding: 6rem 4rem; }
   color: var(--ink); margin-bottom: 0.5rem;
 }
 .ch-text { font-size: 0.92rem; color: var(--brown-dark); line-height: 1.85; }
-
-.story-aside { position: sticky; top: 7rem; }
-.pull-quote {
-  font-family: var(--serif); font-size: 1.35rem; font-style: italic;
-  color: var(--brown-dark); line-height: 1.55;
-  border-left: 3px solid var(--accent);
-  padding: 0.25rem 0 0.25rem 1.5rem;
-  margin-bottom: 2.5rem;
+.story-note { padding-top: 0.35rem; }
+.story-fact {
+  display: block; border-left: 2px solid var(--accent-light); padding-left: 1rem;
 }
-.fact-stack { display: flex; flex-direction: column; gap: 0; }
-.fact {
-  display: flex; gap: 1rem; align-items: baseline;
-  padding: 1.1rem 0; border-bottom: 1px solid var(--tan);
-}
+.story-fact + .story-fact { margin-top: 1.25rem; }
 .fact-n {
-  font-family: var(--serif); font-size: 1.7rem; font-weight: 500;
-  color: var(--accent); line-height: 1; min-width: 56px;
+  display: block; font-family: var(--serif); font-size: 1.6rem; font-weight: 500;
+  color: var(--accent); line-height: 1.1; margin-bottom: 0.2rem;
 }
-.fact-l { font-size: 0.85rem; color: var(--brown); line-height: 1.5; }
+.fact-l { display: block; font-size: 0.85rem; color: var(--brown-dark); line-height: 1.5; }
+.pull-quote {
+  margin: 0; font-family: var(--serif); font-size: 1.3rem; font-style: italic;
+  color: var(--brown-dark); line-height: 1.5;
+  border-left: 3px solid var(--accent); padding: 0.1rem 0 0.1rem 1.25rem;
+}
 
 /* ─── WHAT I DO ─── */
 #expertise { background: var(--cream); }
@@ -664,8 +669,7 @@ footer a { color: var(--brown-light); text-decoration: none; }
   .case-notes { grid-template-columns: 1fr; gap: 2.5rem; margin-top: 2.5rem; }
   .case-facts > div { grid-template-columns: 1fr; gap: 0.2rem; }
   section { padding: 4rem 1.5rem; }
-  .story-grid { grid-template-columns: 1fr; gap: 3rem; }
-  .story-aside { position: static; }
+  .story-row { grid-template-columns: 1fr; gap: 1.25rem; padding: 1.75rem 0; }
   .life-grid { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
   .xp-chapter { grid-template-columns: 1fr; gap: 1.5rem; padding: 2rem 0; }
   .xp-head { position: static; }
@@ -1704,51 +1708,45 @@ footer a { color: var(--brown-light); text-decoration: none; }
 
 <!-- STORY -->
 <section id="story">
-  <div class="story-grid">
-    <div>
-      <div class="section-label fade-up">The whole story</div>
-      <h2 class="section-title fade-up">I took the long road.<br><em>On purpose.</em></h2>
-      <div class="chapters">
-        <div class="chapter fade-up">
-          <div class="ch-num">01</div>
-          <div>
-            <div class="ch-title">From Venezuela to Seattle. Same skills, different room</div>
-            <div class="ch-text">For about four years across multiple stints, I lived and worked abroad. Two years in Venezuela with a campus ministry called Vida Estudiantil. I worked in Spanish the whole time, and I still speak it conversationally. Then time in India, including a full year there with my family, doing similar work in a very different cultural context. All told, nearly thirteen years of walking up to strangers, finding common ground, and listening for the thing underneath the thing. You get good at reading people fast when that's your whole job. Turns out people are people, whether you're on a university campus in Mérida or in a boardroom in Seattle.</div>
-          </div>
-        </div>
-        <div class="chapter fade-up">
-          <div class="ch-num">02</div>
-          <div>
-            <div class="ch-title">Trust was always the job</div>
-            <div class="ch-text">I moved to Kalles Group in 2018 because I wanted to work in technology, and security made sense to me. A lot of security comes down to whether people can trust the systems they rely on, and building trust is what my work had always been about. I started on a CRM project and moved into recruiting a few months later. After I was promoted into a bigger role, I doubled revenue-generating hires within 60 days and led a company rebrand. I also started getting pulled into rooms with security and engineering leaders at the companies we served. Over several years of working with Fortune 50 clients in security, risk, and AI, I went from being the recruiter in the room to being an advisor.</div>
-          </div>
-        </div>
-        <div class="chapter fade-up">
-          <div class="ch-num">03</div>
-          <div>
-            <div class="ch-title">Pattern recognition across clients</div>
-            <div class="ch-text">Most people see one company from the inside. I've spent years advising security, risk, and technology leaders across banks, fintechs, Fortune 50 tech companies, and growth-stage startups simultaneously. You start to see the patterns: what moves initiatives forward, what kills them quietly, what leaders say versus what's really happening. When AI started becoming a real enterprise conversation, I was already in those rooms.</div>
-          </div>
-        </div>
-        <div class="chapter fade-up">
-          <div class="ch-num">04</div>
-          <div>
-            <div class="ch-title">The ethical layer</div>
-            <div class="ch-text">I'm a lay pastor and a dad, and both matter a lot to me. My kids are getting older. We've traded garage bike builds for snowboarding and skiing together, and I'm hoping for a lot more of that. I had a hip resurfacing a while back and I'm still working my way back to strength. I mention it because it's the same thing I'd tell anyone navigating a hard season: you figure out what you're actually made of when the path is slower than you'd like. That shapes how I give advice. I'll tell you what I actually think, even when it isn't what you were hoping to hear.</div>
-          </div>
-        </div>
+  <div class="section-label fade-up">The whole story</div>
+  <h2 class="section-title fade-up">I took the long road.<br><em>On purpose.</em></h2>
+  <div class="story-rows">
+    <div class="story-row fade-up">
+      <div class="story-main">
+        <h3 class="ch-title">From Venezuela to Seattle. Same skills, different room</h3>
+        <p class="ch-text">For about four years across multiple stints, I lived and worked abroad. Two years in Venezuela with a campus ministry called Vida Estudiantil. I worked in Spanish the whole time, and I still speak it conversationally. Then time in India, including a full year there with my family, doing similar work in a very different cultural context. All told, nearly thirteen years of walking up to strangers, finding common ground, and listening for the thing underneath the thing. You get good at reading people fast when that's your whole job. Turns out people are people, whether you're on a university campus in Mérida or in a boardroom in Seattle.</p>
       </div>
+      <aside class="story-note">
+          <div class="story-fact"><span class="fact-n">3</span><span class="fact-l">Continents lived and worked on, with a driver's license in each</span></div>
+      </aside>
     </div>
-    <div class="story-aside">
-      <div class="pull-quote fade-up">
-        "The long road turned out to be the whole point."
+    <div class="story-row fade-up">
+      <div class="story-main">
+        <h3 class="ch-title">Trust was always the job</h3>
+        <p class="ch-text">I moved to Kalles Group in 2018 because I wanted to work in technology, and security made sense to me. A lot of security comes down to whether people can trust the systems they rely on, and building trust is what my work had always been about. I started on a CRM project and moved into recruiting a few months later. After I was promoted into a bigger role, I doubled revenue-generating hires within 60 days and led a company rebrand. I also started getting pulled into rooms with security and engineering leaders at the companies we served. Over several years of working with Fortune 50 clients in security, risk, and AI, I went from being the recruiter in the room to being an advisor.</p>
       </div>
-      <div class="fact-stack">
-        <div class="fact fade-up"><div class="fact-n">4</div><div class="fact-l">Executive panels designed and moderated for Smart Cookies</div></div>
-        <div class="fact fade-up"><div class="fact-n">150%</div><div class="fact-l">Year-over-year growth on the account I grew from $0 to $5M</div></div>
-        <div class="fact fade-up"><div class="fact-n">400+</div><div class="fact-l">Interviews conducted in engineering, security, and AI roles</div></div>
-        <div class="fact fade-up"><div class="fact-n">3</div><div class="fact-l">Continents lived and worked on, with a driver's license in each</div></div>
+      <aside class="story-note">
+          <div class="story-fact"><span class="fact-n">400+</span><span class="fact-l">Interviews conducted in engineering, security, and AI roles</span></div>
+      </aside>
+    </div>
+    <div class="story-row fade-up">
+      <div class="story-main">
+        <h3 class="ch-title">Pattern recognition across clients</h3>
+        <p class="ch-text">Most people see one company from the inside. I've spent years advising security, risk, and technology leaders across banks, fintechs, Fortune 50 tech companies, and growth-stage startups simultaneously. You start to see the patterns: what moves initiatives forward, what kills them quietly, what leaders say versus what's really happening. When AI started becoming a real enterprise conversation, I was already in those rooms.</p>
       </div>
+      <aside class="story-note">
+          <div class="story-fact"><span class="fact-n">150%</span><span class="fact-l">Year-over-year growth on the account I grew from $0 to $5M</span></div>
+          <div class="story-fact"><span class="fact-n">4</span><span class="fact-l">Executive panels designed and moderated for Smart Cookies</span></div>
+      </aside>
+    </div>
+    <div class="story-row fade-up">
+      <div class="story-main">
+        <h3 class="ch-title">The ethical layer</h3>
+        <p class="ch-text">I'm a lay pastor and a dad, and both matter a lot to me. My kids are getting older. We've traded garage bike builds for snowboarding and skiing together, and I'm hoping for a lot more of that. I had a hip resurfacing a while back and I'm still working my way back to strength. I mention it because it's the same thing I'd tell anyone navigating a hard season: you figure out what you're actually made of when the path is slower than you'd like. That shapes how I give advice. I'll tell you what I actually think, even when it isn't what you were hoping to hear.</p>
+      </div>
+      <aside class="story-note">
+          <blockquote class="pull-quote">"The long road turned out to be the whole point."</blockquote>
+      </aside>
     </div>
   </div>
 </section>
