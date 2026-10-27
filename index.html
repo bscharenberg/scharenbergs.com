@@ -403,38 +403,27 @@ section { padding: 6rem 4rem; }
 
 /* ─── EXPERIENCE ─── */
 #experience { background: var(--parchment); }
-.timeline { max-width: 800px; margin: 0 auto; }
-.tl-item {
-  display: grid; grid-template-columns: 180px 1fr;
-  gap: 2rem; padding-bottom: 2.8rem; position: relative;
+.xp-chapter {
+  display: grid; grid-template-columns: 17rem minmax(0, 1fr); gap: 3rem;
+  max-width: 1160px; padding: 2.5rem 0; border-top: 1px solid var(--tan);
 }
-.tl-item::before {
-  content: ''; position: absolute;
-  left: 176px; top: 8px; bottom: 0;
-  width: 1px; background: var(--tan);
+.xp-chapter:first-of-type { margin-top: 1rem; }
+.xp-head { align-self: start; position: sticky; top: 6rem; }
+.xp-org { font-family: var(--serif); font-size: 1.5rem; font-weight: 500; color: var(--ink); line-height: 1.25; margin-bottom: 0.4rem; }
+.xp-span { font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--brown); line-height: 1.7; }
+.xp-span + .xp-note { margin-top: 0.9rem; }
+.xp-note { font-size: 0.88rem; color: var(--brown-dark); line-height: 1.7; }
+.xp-roles { list-style: none; margin: 0; padding: 0; }
+.xp-role {
+  display: grid; grid-template-columns: 9rem minmax(0, 1fr); gap: 2rem;
+  padding: 0 0 2rem; position: relative;
 }
-.tl-item:last-child::before { display: none; }
-.tl-dot {
-  position: absolute; left: 171px; top: 6px;
-  width: 11px; height: 11px; border-radius: 50%;
-  background: var(--accent); border: 2.5px solid var(--parchment);
-}
-.tl-date {
-  font-size: 0.78rem; color: var(--brown-light);
-  letter-spacing: 0.03em; text-align: right; padding-top: 0.15rem;
-  padding-right: 1rem; line-height: 1.5; white-space: nowrap;
-}
-.tl-body { padding-left: 2rem; }
-.tl-role {
-  font-family: var(--serif); font-size: 1.08rem; font-weight: 500;
-  color: var(--ink); margin-bottom: 0.15rem;
-}
-.tl-co {
-  font-size: 0.82rem; color: var(--accent); font-weight: 500;
-  letter-spacing: 0.03em; margin-bottom: 0.65rem; text-transform: uppercase;
-}
-.tl-desc { font-size: 0.9rem; color: var(--brown-dark); line-height: 1.8; }
-.tl-dash { display: none; }
+.xp-role + .xp-role { padding-top: 2rem; border-top: 1px solid var(--tan); }
+.xp-role:last-child { padding-bottom: 0; }
+.xp-when { font-size: 0.82rem; color: var(--brown); padding-top: 0.3rem; }
+.xp-title { font-family: var(--serif); font-size: 1.15rem; font-weight: 500; color: var(--ink); margin-bottom: 0.25rem; }
+.xp-co { font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--brown); margin-bottom: 0.6rem; }
+.xp-desc { font-size: 0.9rem; color: var(--brown-dark); line-height: 1.8; margin-top: 0.4rem; max-width: 620px; }
 
 /* ─── CLIENTS ─── */
 #clients { background: var(--warm-white); }
@@ -678,13 +667,10 @@ footer a { color: var(--brown-light); text-decoration: none; }
   .story-grid { grid-template-columns: 1fr; gap: 3rem; }
   .story-aside { position: static; }
   .life-grid { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
-  .tl-item { grid-template-columns: 1fr; gap: 0.4rem; padding-left: 1.6rem; padding-bottom: 2.2rem; }
-  .tl-item::before { left: 5px; }
-  .tl-dot { left: 0; }
-  .tl-date { text-align: left; padding: 0; white-space: normal; }
-  .tl-date br { display: none; }
-  .tl-dash { display: inline; }
-  .tl-body { padding-left: 0; }
+  .xp-chapter { grid-template-columns: 1fr; gap: 1.5rem; padding: 2rem 0; }
+  .xp-head { position: static; }
+  .xp-role { grid-template-columns: 1fr; gap: 0.3rem; }
+  .xp-when { padding-top: 0; }
   .thinking-grid { grid-template-columns: 1fr; gap: 2.5rem; }
   .topic-item { gap: 1rem; }
   .topic-tag { flex-shrink: 0; }
@@ -1401,61 +1387,72 @@ footer a { color: var(--brown-light); text-decoration: none; }
 <section id="experience">
   <div class="section-label fade-up">Experience</div>
   <h2 class="section-title fade-up">From recruiting manager to director of growth</h2>
-  <div class="timeline">
-    <div class="tl-item fade-up" id="role-kalles-growth">
-      <div class="tl-dot"></div>
-      <div class="tl-date">May 2022<span class="tl-dash"> – </span><br>Present</div>
-      <div class="tl-body">
-        <div class="tl-role">Director of Growth & GTM Strategy</div>
-        <div class="tl-co">Kalles Group · Seattle, WA</div>
-        <div class="tl-desc">Grew one account from zero to $5M across six buying centers over three years. What I learned: enterprise buyers don't want a vendor, they want someone they can trust, who they like, and who will be honest with them when it matters. I also helped launch Smart Cookies, our executive panel series, and moderate every panel.</div>
-      </div>
+
+  <div class="xp-chapter fade-up">
+    <div class="xp-head">
+      <h3 class="xp-org">Enterprise tech</h3>
+      <div class="xp-span">2018 to present</div>
+      <div class="xp-span">Kalles Group · Seattle</div>
+      <p class="xp-note">Three roles at one firm, each building on the last.</p>
     </div>
-    <div class="tl-item fade-up">
-      <div class="tl-dot"></div>
-      <div class="tl-date">Aug 2019<span class="tl-dash"> – </span><br>May 2022</div>
-      <div class="tl-body">
-        <div class="tl-role">Head of Recruiting & Marketing</div>
-        <div class="tl-co">Kalles Group · Seattle, WA</div>
-        <div class="tl-desc">Hired Principal Engineers for AI-powered security products before AI was the thing everyone was hiring for. Spent a lot of time in rooms with technical leaders, helping them craft a narrative that would actually resonate with the people they wanted to hire.</div>
-      </div>
+    <ol class="xp-roles">
+      <li class="xp-role" id="role-kalles-growth">
+        <div class="xp-when">May 2022 – Present</div>
+        <div class="xp-body">
+          <h4 class="xp-title">Director of Growth & GTM Strategy</h4>
+          <p class="xp-desc">Grew one account from zero to $5M across six buying centers over three years. What I learned: enterprise buyers don't want a vendor, they want someone they can trust, who they like, and who will be honest with them when it matters. I also helped launch Smart Cookies, our executive panel series, and moderate every panel.</p>
+        </div>
+      </li>
+      <li class="xp-role">
+        <div class="xp-when">Aug 2019 – May 2022</div>
+        <div class="xp-body">
+          <h4 class="xp-title">Head of Recruiting & Marketing</h4>
+          <p class="xp-desc">Hired Principal Engineers for AI-powered security products before AI was the thing everyone was hiring for. Spent a lot of time in rooms with technical leaders, helping them craft a narrative that would actually resonate with the people they wanted to hire.</p>
+        </div>
+      </li>
+      <li class="xp-role">
+        <div class="xp-when">Oct 2018 – Aug 2019</div>
+        <div class="xp-body">
+          <h4 class="xp-title">Recruiting Manager</h4>
+          <p class="xp-desc">Led recruiting for engineering, cybersecurity, and TPM roles at Fortune 500 clients. Managed 5 direct reports, conducted 400+ interviews, and closed 30+ hires.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+
+  <div class="xp-chapter fade-up">
+    <div class="xp-head">
+      <h3 class="xp-org">Nonprofit leadership</h3>
+      <div class="xp-span">2005 to 2017</div>
+      <div class="xp-span">Venezuela · Seattle · India</div>
+      <p class="xp-note">More than a decade of nonprofit work, where I learned to build trust with people very different from me.</p>
     </div>
-    <div class="tl-item fade-up">
-      <div class="tl-dot"></div>
-      <div class="tl-date">Oct 2018<span class="tl-dash"> – </span><br>Aug 2019</div>
-      <div class="tl-body">
-        <div class="tl-role">Recruiting Manager</div>
-        <div class="tl-co">Kalles Group · Seattle, WA</div>
-        <div class="tl-desc">Led recruiting for engineering, cybersecurity, and TPM roles at Fortune 500 clients. Managed 5 direct reports, conducted 400+ interviews, and closed 30+ hires.</div>
-      </div>
-    </div>
-    <div class="tl-item fade-up">
-      <div class="tl-dot"></div>
-      <div class="tl-date">Dec 2013<span class="tl-dash"> – </span><br>Jun 2017</div>
-      <div class="tl-body">
-        <div class="tl-role">Director, India Partnership</div>
-        <div class="tl-co">CRU & Global Leadership Forum · Karnataka, India</div>
-        <div class="tl-desc">Led a core team of 7 and directed visiting teams of 20+. Partnered with Manipal University on a flagship leadership program, with a $500K program budget. Three and a half years of learning how to build trust across language, religion, class, and generation. The skill I still use the most.</div>
-      </div>
-    </div>
-    <div class="tl-item fade-up">
-      <div class="tl-dot"></div>
-      <div class="tl-date">Dec 2007<span class="tl-dash"> – </span><br>Dec 2013</div>
-      <div class="tl-body">
-        <div class="tl-role">Senior Staff</div>
-        <div class="tl-co">CRU · Seattle, WA</div>
-        <div class="tl-desc">Led fund development as a missionary. Spent years initiating conversations about faith and meaning with strangers, which taught me how to talk to people about things that matter without making it weird. By the end I could tell within the first five minutes whether a conversation was going somewhere real. Most of my instincts about enterprise relationship-building were shaped here, long before I ever sat in a B2B sales meeting.</div>
-      </div>
-    </div>
-    <div class="tl-item fade-up">
-      <div class="tl-dot"></div>
-      <div class="tl-date">2005<span class="tl-dash"> – </span><br>2007</div>
-      <div class="tl-body">
-        <div class="tl-role">Team Leader / Outreach Coordinator</div>
-        <div class="tl-co">Vida Estudiantil · Mérida, Venezuela</div>
-        <div class="tl-desc">First leadership role, first real job, done in a second language in a country I'd never been to. Co-led a multinational, bilingual team of 15. Built a local volunteer base of 25+ Venezuelans, many of whom are still leading the engagement today.</div>
-      </div>
-    </div>
+    <ol class="xp-roles">
+      <li class="xp-role">
+        <div class="xp-when">Dec 2013 – Jun 2017</div>
+        <div class="xp-body">
+          <h4 class="xp-title">Director, India Partnership</h4>
+          <div class="xp-co">CRU & Global Leadership Forum · Karnataka, India</div>
+          <p class="xp-desc">Led a core team of 7 and directed visiting teams of 20+. Partnered with Manipal University on a flagship leadership program, with a $500K program budget. Three and a half years of learning how to build trust across language, religion, class, and generation. The skill I still use the most.</p>
+        </div>
+      </li>
+      <li class="xp-role">
+        <div class="xp-when">Dec 2007 – Dec 2013</div>
+        <div class="xp-body">
+          <h4 class="xp-title">Senior Staff</h4>
+          <div class="xp-co">CRU · Seattle, WA</div>
+          <p class="xp-desc">Led fund development as a missionary. Spent years initiating conversations about faith and meaning with strangers, which taught me how to talk to people about things that matter without making it weird. By the end I could tell within the first five minutes whether a conversation was going somewhere real. Most of my instincts about enterprise relationship-building were shaped here, long before I ever sat in a B2B sales meeting.</p>
+        </div>
+      </li>
+      <li class="xp-role">
+        <div class="xp-when">2005 – 2007</div>
+        <div class="xp-body">
+          <h4 class="xp-title">Team Leader / Outreach Coordinator</h4>
+          <div class="xp-co">Vida Estudiantil · Mérida, Venezuela</div>
+          <p class="xp-desc">First leadership role, first real job, done in a second language in a country I'd never been to. Co-led a multinational, bilingual team of 15. Built a local volunteer base of 25+ Venezuelans, many of whom are still leading the engagement today.</p>
+        </div>
+      </li>
+    </ol>
   </div>
 </section>
 
