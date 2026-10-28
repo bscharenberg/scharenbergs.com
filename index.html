@@ -167,6 +167,7 @@ nav {
   margin-bottom: 1.5rem; line-height: 1.65;
 }
 .hero-tagline { margin-bottom: 2.4rem; }
+.hero-value { font-size: 1.08rem; color: var(--ink); line-height: 1.7; max-width: 540px; margin: -0.5rem 0 1.25rem; }
 .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
 .hero-built { margin-top: 1.5rem; font-size: 0.88rem; color: var(--brown-dark); }
 .hero-built a {
@@ -301,6 +302,7 @@ section { padding: 6rem 4rem; }
 .do-proof:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 .do-proof:hover span, .do-proof:focus-visible span { margin-left: 0.25rem; }
 .do-proof span { transition: margin 0.15s; }
+.do-proof + .do-proof { margin-top: 1rem; }
 
 /* ─── CASE NOTES ─── */
 .case-notes { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; max-width: 1160px; margin-top: 3.5rem; }
@@ -346,7 +348,7 @@ section { padding: 6rem 4rem; }
 @media (max-width: 1240px) and (min-width: 901px) {
   .do-row { grid-template-columns: 3rem 1fr 15rem; row-gap: 0.6rem; }
   .do-title, .do-text { grid-column: 2; }
-  .do-proof { grid-column: 3; grid-row: 1 / span 2; align-self: start; }
+  .do-proof, .do-proofs { grid-column: 3; grid-row: 1 / span 2; align-self: start; }
 }
 
 /* ─── SMART COOKIES ─── */
@@ -631,6 +633,7 @@ footer a { color: var(--brown-light); text-decoration: none; }
   .hero-eyebrow { order: 1; letter-spacing: 0.08em; font-size: 0.68rem; margin-bottom: 1.2rem; }
   .hero-eyebrow span { display: none; }
   .hero-name { order: 2; margin-bottom: 1.5rem; }
+  .hero-value { order: 3; margin: 0 0 1.5rem; }
   .hero-figure { order: 3; margin-bottom: 1.5rem; }
   .hero-tagline { order: 4; margin-bottom: 1.75rem; }
   .hero-ctas { order: 5; margin-bottom: 1rem; }
@@ -647,7 +650,7 @@ footer a { color: var(--brown-light); text-decoration: none; }
     text-decoration: underline; text-decoration-color: var(--sand); text-underline-offset: 4px;
   }
   .do-row { grid-template-columns: 2rem minmax(0, 1fr); gap: 0.75rem 1rem; padding: 1.5rem 0; }
-  .do-row > .do-text, .do-row > .do-proof { grid-column: 1 / -1; }
+  .do-row > .do-text, .do-row > .do-proof, .do-row > .do-proofs { grid-column: 1 / -1; }
   .do-proof { margin-top: 0.25rem; }
   .case-notes { grid-template-columns: 1fr; gap: 2.5rem; margin-top: 2.5rem; }
   .case-facts > div { grid-template-columns: 1fr; gap: 0.2rem; }
@@ -1187,6 +1190,7 @@ footer a { color: var(--brown-light); text-decoration: none; }
     <h1 class="hero-name">
       I listen well.<br><em>That turns out to be useful.</em>
     </h1>
+    <p class="hero-value">Leaders trust new technology when they trust the person explaining it. For eight years, that's been me.</p>
     <p class="hero-tagline">
       Most problems get clearer when you talk them through with the right person. And I'll be honest about what I don't know.
     </p>
@@ -1212,7 +1216,7 @@ footer a { color: var(--brown-light); text-decoration: none; }
       </div>
       <div class="stat-item">
         <dt class="stat-num">$5M</dt>
-        <dd class="stat-label">Single account grown from $0</dd>
+        <dd class="stat-label">Cumulative revenue on one account, grown from $0 over three years</dd>
       </div>
       <div class="stat-item">
         <dt class="stat-num">$300K</dt>
@@ -1242,7 +1246,10 @@ footer a { color: var(--brown-light); text-decoration: none; }
       <span class="do-num">01</span>
       <h3 class="do-title">GTM & Partnerships</h3>
       <p class="do-text">Building the motion that turns domain expertise into revenue. I've built GTM motions from scratch for security and AI services, from positioning and ICP to pipeline, partnerships, and expansion.</p>
-      <a class="do-proof" href="#role-kalles-growth"><strong>$0 to $5M</strong> <em>One account, grown over three years</em> <span aria-hidden="true">→</span></a>
+      <div class="do-proofs">
+      <a class="do-proof" href="#role-kalles-growth"><strong>$0 to $5M</strong> <em>Cumulative revenue on one account over three years</em> <span aria-hidden="true">→</span></a>
+      <a class="do-proof" href="#role-india"><strong>$500K</strong> <em>Partnership program with Manipal University</em> <span aria-hidden="true">→</span></a>
+      </div>
     </li>
     <li class="do-row fade-up">
       <span class="do-num">02</span>
@@ -1261,7 +1268,7 @@ footer a { color: var(--brown-light); text-decoration: none; }
     <article class="case-note fade-up" id="case-ai-workflows">
       <div class="case-label">Case note · A global technology company</div>
       <h3 class="case-title">Freeing a team to focus on its partners</h3>
-      <p class="case-role"><span>My role</span> Account lead. I scoped the work, assembled the team, and oversaw delivery. The engineers built the system.</p>
+      <p class="case-role"><span>My role</span> Account lead. I scoped the work, assembled the team, and oversaw delivery. The engineers built the system. I also signed our first deal with a nearshore operations partner and manage that relationship, which helped us win the engagement and its renewal.</p>
       <p class="case-lead">An AI automation system took manual processing off a partner-facing team's plate, so they could put their time into the partners they serve. It began as an advisory proof of concept and grew into a $300K engagement.</p>
       <dl class="case-facts">
         <div><dt>Engagement</dt><dd>$300K, grown from an advisory proof of concept</dd></div>
@@ -1272,7 +1279,7 @@ footer a { color: var(--brown-light); text-decoration: none; }
         <h4>The problem</h4>
         <p>The client's operations team handled a high volume of partner submissions by hand. The work was slow and inconsistent, and it carried risk that was hard to see. Every hour spent moving submissions through by hand was an hour not spent helping partners succeed. The question wasn't only whether AI could do the work. It was whether AI could give the team that time back.</p>
         <h4>What I did</h4>
-        <p>I'd built the relationship over time. I shaped a focused pilot on one workflow category instead of a broad program, and brought in an AI specialist and a nearshore operations partner. I kept the client's stakeholders and our delivery team working from the same picture of success, and stayed the executive point of contact from pilot through production.</p>
+        <p>I'd built the relationship over time. I shaped a focused pilot on one workflow category instead of a broad program, brought in an AI specialist, and signed our first deal with a nearshore operations partner. I kept the client's stakeholders and our delivery team working from the same picture of success, and stayed the executive point of contact from pilot through production.</p>
         <h4>How we approached it</h4>
         <p>We proved it small, with one workflow and a human-in-the-loop design, so people stayed in control of decisions while the system did the repetitive work. We built on the client's own platform tools, so the system fit their security expectations from day one. Once the first workflow held up, we expanded category by category rather than all at once.</p>
         <h4>What we haven't measured yet</h4>
@@ -1385,7 +1392,7 @@ footer a { color: var(--brown-light); text-decoration: none; }
     <div class="reality-check-card agentos-card fade-up" id="agentos">
       <div class="reality-check-label">FOUNDATION · KALLES GROUP</div>
       <h3 class="reality-check-title">KG AgentOS: one source of truth for a firm's AI agents</h3>
-      <p class="reality-check-desc">Our AI agents were working from scattered, outdated copies of who we are and what we sell. I designed and built a single library of owned files that every agent reads from, so when the firm decides something, the agents reflect it.</p>
+      <p class="reality-check-desc">Our AI agents were working from scattered, outdated copies of who we are and what we sell. I designed the architecture and built the model myself, working out the judgment and rules with Claude. It's a single library of owned files that every agent reads from, so when the firm decides something, the agents reflect it.</p>
       <figure class="agentos-figure">
         <svg class="agentos-diagram" viewBox="0 0 1020 530" xmlns="http://www.w3.org/2000/svg" font-family="DM Sans, system-ui, sans-serif" aria-hidden="true" focusable="false">
           <defs>
@@ -1662,7 +1669,7 @@ footer a { color: var(--brown-light); text-decoration: none; }
       <p class="xp-note">More than a decade of nonprofit work, where I learned to build trust with people very different from me.</p>
     </div>
     <ol class="xp-roles">
-      <li class="xp-role">
+      <li class="xp-role" id="role-india">
         <div class="xp-when">Dec 2013 – Jun 2017</div>
         <div class="xp-body">
           <h4 class="xp-title">Director, India Partnership</h4>
