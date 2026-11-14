@@ -780,7 +780,6 @@ footer a { color: var(--brown-light); text-decoration: none; }
 /* ─── TRACKWALK ─── */
 .trackwalk-card {
   display: grid; grid-template-columns: minmax(0, 1fr) 240px; gap: 48px; align-items: start;
-  margin-bottom: 2.5rem;
 }
 .trackwalk-icon {
   width: 28px; height: 28px; border-radius: 6px;
@@ -816,7 +815,6 @@ footer a { color: var(--brown-light); text-decoration: none; }
   .trackwalk-card { grid-template-columns: 1fr; gap: 32px; }
   .trackwalk-shot { max-width: 240px; margin: 0 auto; }
 }
-.pluginscout-card { margin-top: 2.5rem; }
 .pluginscout-shot { margin: 0 0 24px; }
 .pluginscout-shot img {
   display: block; width: 100%; height: auto;
@@ -828,9 +826,7 @@ footer a { color: var(--brown-light); text-decoration: none; }
   font-family: "DM Sans", system-ui, sans-serif; font-size: 13px; color: #A8BAA4;
 }
 
-.agentos-card {
-  margin-bottom: 2.5rem;
-}
+#tools .reality-check-card + .reality-check-card { margin-top: 2.5rem; }
 /* The diagram sits on a light panel, like a page pulled from the working files. */
 .agentos-figure {
   margin: 0 0 24px; padding: 24px 28px 18px;
@@ -1203,7 +1199,7 @@ footer a { color: var(--brown-light); text-decoration: none; }
       <a href="#tools" class="btn-primary">See what I've built</a>
       <a href="#story" class="btn-ghost">Read the story</a>
     </div>
-    <p class="hero-built">What I've built with AI: <a href="#agentos">KG AgentOS</a> · <a href="#trackwalk">Trackwalk</a> · <a href="#pluginscout">Plugin Scout</a></p>
+    <p class="hero-built">What I've built with AI: <a href="#agentos">KG AgentOS</a> · <a href="#pluginscout">Plugin Scout</a> · <a href="#trackwalk">Trackwalk</a></p>
   </div>
   <div class="hero-right">
     <figure class="hero-figure fade-up">
@@ -1391,7 +1387,7 @@ footer a { color: var(--brown-light); text-decoration: none; }
     <h2 class="section-title fade-up">What I've built with AI</h2>
  
     <div class="tools-intro">
-      <p>KG AgentOS is the context layer my firm's AI agents work from, Trackwalk is a live product an agent team builds and keeps running, and the sales agent is a demo you can try. Plugin Scout is an open-source plugin I built for Nous Research's Hermes Agent.</p>
+      <p>KG AgentOS is the context layer my firm's AI agents work from, and the sales agent is a demo of the same idea that you can try. Plugin Scout is an open-source plugin I built for Nous Research's Hermes Agent. Trackwalk is a live product an agent team builds and keeps running.</p>
     </div>
  
     <div class="reality-check-card agentos-card fade-up" id="agentos">
@@ -1573,31 +1569,7 @@ footer a { color: var(--brown-light); text-decoration: none; }
       </div>
     </div>
 
-    <div class="reality-check-card trackwalk-card fade-up" id="trackwalk">
-      <div class="trackwalk-body">
-        <div class="reality-check-label">LIVE PRODUCT · AGENT TEAM</div>
-        <h3 class="reality-check-title"><img class="trackwalk-icon" src="trackwalk-icon.png" alt="" width="28" height="28">Trackwalk: a live site an agent team builds and runs</h3>
-        <p class="reality-check-desc">Trackwalk is a live site for downhill mountain bike racing fans, with fresh race video and World Cup results back to 2009. An AI coding agent writes the code, and five specialist agents scope ideas and review the work. I set the direction, and I decide what ships. Day to day it runs on its own: scheduled jobs pull in new race content, the calendar, and results as they're posted. Running agents takes the same skills as running a team, mainly clear scope and careful review.</p>
-        <ul class="trackwalk-tags">
-          <li>Multi-agent workflow</li>
-          <li>Five specialist agents</li>
-          <li>Results back to 2009</li>
-          <li>18 sources</li>
-          <li>Refreshes daily</li>
-          <li>Open source</li>
-        </ul>
-        <div class="tools-links">
-          <a class="reality-check-launch" href="https://trackwalk.racing" target="_blank" rel="noopener">Visit trackwalk.racing <span class="reality-check-arrow">↗</span></a>
-          <a class="tools-link" href="https://github.com/bscharenberg/trackwalk" target="_blank" rel="noopener">View on GitHub ↗</a>
-        </div>
-      </div>
-      <figure class="trackwalk-shot">
-        <img src="trackwalk-results.jpg" alt="Trackwalk on a phone, showing World Cup finals results for Lake Placid" width="750" height="1400" loading="lazy">
-        <figcaption>The Results view on a phone</figcaption>
-      </figure>
-    </div>
-
-    <div class="reality-check-card" id="scout">
+    <div class="reality-check-card fade-up" id="scout">
       <div class="reality-check-card-body">
         <div class="reality-check-label">DEMO · TRY IT</div>
         <h3 class="reality-check-title">A sales agent built on a firm's own judgment</h3>
@@ -1643,6 +1615,30 @@ footer a { color: var(--brown-light); text-decoration: none; }
         <a class="reality-check-launch" href="https://hermes-agent.nousresearch.com/marketplace/plugin-scout" target="_blank" rel="noopener">View in the Hermes Marketplace <span class="reality-check-arrow">↗</span></a>
         <a class="tools-link" href="https://github.com/bscharenberg/plugin-scout" target="_blank" rel="noopener">View on GitHub ↗</a>
       </div>
+    </div>
+
+    <div class="reality-check-card trackwalk-card fade-up" id="trackwalk">
+      <div class="trackwalk-body">
+        <div class="reality-check-label">LIVE PRODUCT · AGENT TEAM</div>
+        <h3 class="reality-check-title"><img class="trackwalk-icon" src="trackwalk-icon.png" alt="" width="28" height="28">Trackwalk: a live site an agent team builds and runs</h3>
+        <p class="reality-check-desc">Trackwalk is a live site for downhill mountain bike racing fans, with fresh race video and World Cup results back to 2009. An AI coding agent writes the code, and five specialist agents scope ideas and review the work. I set the direction, and I decide what ships. Day to day it runs on its own: scheduled jobs pull in new race content, the calendar, and results as they're posted. Running agents takes the same skills as running a team, mainly clear scope and careful review.</p>
+        <ul class="trackwalk-tags">
+          <li>Multi-agent workflow</li>
+          <li>Five specialist agents</li>
+          <li>Results back to 2009</li>
+          <li>18 sources</li>
+          <li>Refreshes daily</li>
+          <li>Open source</li>
+        </ul>
+        <div class="tools-links">
+          <a class="reality-check-launch" href="https://trackwalk.racing" target="_blank" rel="noopener">Visit trackwalk.racing <span class="reality-check-arrow">↗</span></a>
+          <a class="tools-link" href="https://github.com/bscharenberg/trackwalk" target="_blank" rel="noopener">View on GitHub ↗</a>
+        </div>
+      </div>
+      <figure class="trackwalk-shot">
+        <img src="trackwalk-results.jpg" alt="Trackwalk on a phone, showing World Cup finals results for Lake Placid" width="750" height="1400" loading="lazy">
+        <figcaption>The Results view on a phone</figcaption>
+      </figure>
     </div>
 
     <p class="tools-footnote" style="margin-top: 2rem;">I've packaged my own GTM thinking the same way, as a private sanity checker I use to pressure-test new offerings. If you're working through something specific, <a href="#contact">reach out</a>.</p>
