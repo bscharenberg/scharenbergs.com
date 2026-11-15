@@ -600,6 +600,8 @@ footer {
   font-size: 0.8rem; letter-spacing: 0.03em;
 }
 footer a { color: var(--brown-light); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+.footer-credits { max-width: 62ch; text-align: right; line-height: 1.6; }
 
 /* ─── FADE IN ─── */
 .fade-up {
@@ -666,6 +668,7 @@ footer a { color: var(--brown-light); text-decoration: none; }
   .sc-go { text-align: left; }
   .client-row { margin-top: 1rem; }
   footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+  .footer-credits { text-align: center; }
   .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
   .contact-btn { width: 100%; }
 }
@@ -1856,7 +1859,7 @@ footer a { color: var(--brown-light); text-decoration: none; }
 <!-- FOOTER -->
 <footer>
   <span>© 2026 Bryon Scharenberg · Seattle, WA</span>
-  <span>Built with Claude, GitHub Pages, and VS Code.</span>
+  <span class="footer-credits">Built with Claude Code on Opus 5.5, with design reviews from GPT Astra through OpenRouter. The sales agent demo calls the Claude API through a Cloudflare Worker. <a href="https://github.com/bscharenberg/scharenbergs.com" target="_blank" rel="noopener">View the source ↗</a></span>
 </footer>
 
 <script>
